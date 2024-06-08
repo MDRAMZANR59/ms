@@ -1,12 +1,12 @@
 <!-- <?php
-    session_start();
-    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']){
+    // session_start();
+    // if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']){
 
-    }else{
-        header('location:login.php');
-    }
+    // }else{
+    //     header('location:login.php');
+    // }
 ?> -->
-<?php $baseurl="http://localhost/1281623/sneat-bootstrap-html-admin-template-free-main/"; ?>
+<?php $baseurl="http://localhost/ms/"; ?>
 <!DOCTYPE html>
 
 <html
