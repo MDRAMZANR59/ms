@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    $baseurl="http://localhost/1281623/sneat-bootstrap-html-admin-template-free-main/";
+    $baseurl="http://localhost/ms/";
 
 ?>
 <!DOCTYPE html>
