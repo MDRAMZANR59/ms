@@ -6,7 +6,12 @@
     //     header('location:login.php');
     // }
 ?> -->
-<?php $baseurl="http://localhost/ms/"; ?>
+<?php 
+include_once('class/crud.php');
+$mysqli=new crud();
+$baseurl="http://localhost/ms/";
+
+?>
 <!DOCTYPE html>
 
 <html
@@ -62,8 +67,7 @@
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <!-- Menu -->
-
-        
+          <?php include('sidebar.php') ; ?>
         <!-- / Menu -->
 
         <!-- Layout container -->
@@ -171,3 +175,5 @@
           </nav>
 
           <!-- / Navbar -->
+          <!-- Content wrapper -->
+          <div class="content-wrapper">

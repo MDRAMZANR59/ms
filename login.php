@@ -165,7 +165,7 @@
                     // if($_POST){
                     //     echo "jo";
                     //     $_SESSION['loggedin']="true";
-                    //     header('location:dashboard.php');
+                    //     header('location:index.php');
                     // }
                     // print_r ($_POST);
                 ?> -->
