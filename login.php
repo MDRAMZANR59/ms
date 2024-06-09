@@ -162,12 +162,12 @@
               </form>
 
                 <!-- <?php
-                    //if($_POST){
-                        //echo "jo";
-                        //$_SESSION['loggedin']="true";
-                        //header('location:dashboard.php');
-                    //}
-                   // print_r ($_POST);
+                    // if($_POST){
+                    //     echo "jo";
+                    //     $_SESSION['loggedin']="true";
+                    //     header('location:dashboard.php');
+                    // }
+                    // print_r ($_POST);
                 ?> -->
 
               <p class="text-center">
