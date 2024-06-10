@@ -18,7 +18,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Register Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Welcome to MS Templete</title>
 
     <meta name="description" content="" />
 
@@ -114,23 +114,18 @@
                       </g>
                     </svg>
                   </span>
-                  <span class="app-brand-text demo text-body fw-bold">Sneat</span>
+                  <span class="app-brand-text demo text-body fw-bold">MS</span>
                 </a>
               </div>
               <!-- /Logo -->
               <h4 class="mb-2">Adventure starts here 🚀</h4>
               <p class="mb-4">Make your app management easy and fun!</p>
 
-              <form id="formAuthentication" class="mb-3" action="index.html">
+              <form id="formAuthentication" class="mb-3" action="index.php">
                 <div class="mb-3">
                   <label for="username" class="form-label">Username</label>
                   <input
-                    type="text"
-                    class="form-control"
-                    id="username"
-                    name="username"
-                    placeholder="Enter your username"
-                    autofocus />
+                    type="text"  class="form-control" id="username" name="username" placeholder="Enter your username" autofocus />
                 </div>
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
@@ -140,12 +135,9 @@
                   <label class="form-label" for="password">Password</label>
                   <div class="input-group input-group-merge">
                     <input
-                      type="password"
-                      id="password"
-                      class="form-control"
-                      name="password"
-                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                      aria-describedby="password" />
+                      type="password" id="password"
+                      class="form-control"  name="password"
+                      placeholder="input password here" aria-describedby="password" />
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                   </div>
                 </div>
@@ -167,7 +159,7 @@
                         $crud=new crud();
                         $_POST['password']=sha1($_POST['password']);
                         $_POST['created_at']=date('Y-m-d H:i:s');
-                        $rs=$crud->common_create('auth',$_POST);
+                        $rs=$crud->common_create('login',$_POST);
                         if($rs['data']){
                             header('location:login.php');
                         }else{

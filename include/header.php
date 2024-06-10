@@ -3,7 +3,7 @@
     // if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']){
 
     // }else{
-    //     header('location:login.php');
+    //     header('location:index.php');
     // }
 ?> -->
 <?php 
