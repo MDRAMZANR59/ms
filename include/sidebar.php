@@ -50,7 +50,7 @@
           </g>
         </svg>
       </span>
-      <span class="app-brand-text demo menu-text fw-bold ms-2">Sneat</span>
+      <span class="app-brand-text demo menu-text fw-bold ms-2">MS</span>
     </a>
 
     <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -68,6 +68,7 @@
         <div data-i18n="Dashboards">Dashboards</div>
       </a>
     </li>
+    
     <li class="menu-item active open">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-users"></i>
@@ -81,6 +82,26 @@
         </li>
         <li class="menu-item">
           <a href="<?= $baseurl ?>customer_list.php" class="menu-link">
+            <div data-i18n="CRM">List</div>
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+
+    <li class="menu-item active open">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-users"></i>
+        <div data-i18n="Dashboards">Suppliers</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="<?= $baseurl ?>supplier_add.php" class="menu-link">
+            <div data-i18n="CRM">Add New</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="<?= $baseurl ?>supplier_list.php" class="menu-link">
             <div data-i18n="CRM">List</div>
           </a>
         </li>
