@@ -3,11 +3,11 @@
  
 <script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/datatables.min.js"></script>
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Basic Tables</h4>
+        <h4 class="py-3 mb-4"><span class="text-muted fw-light">Customer /</span> List</h4>
 
         <!-- Basic Bootstrap Table -->
         <div class="card">
-            <h5 class="card-header">Table Basic</h5>
+            <h5 class="card-header">Customer</h5>
             <div class="table-responsive text-nowrap">
                 <table class="table">
                 <thead>
@@ -42,7 +42,7 @@
                                 <a class="dropdown-item" href="<?= $baseurl ?>customer_edit.php?id=<?= $data->id ?>"
                                 ><i class="bx bx-edit-alt me-2"></i> Edit</a
                                 >
-                                <a class="dropdown-item" href="javascript:void(0);"
+                                <a class="dropdown-item" href="<?= $baseurl ?>customer_delete.php?id=<?= $data->id ?>"
                                 ><i class="bx bx-trash me-2"></i> Delete</a
                                 >
                             </div>
