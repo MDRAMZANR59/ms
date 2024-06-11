@@ -69,9 +69,9 @@
       </a>
     </li>
     
-    <li class="menu-item active open">
+    <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-users"></i>
+        <i class="menu-icon tf-icons bx bx-user-circle"></i>
         <div data-i18n="Dashboards">Customer</div>
       </a>
       <ul class="menu-sub">
@@ -89,9 +89,9 @@
       </ul>
     </li>
 
-    <li class="menu-item active open">
+    <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-users"></i>
+        <i class="menu-icon tf-icons bx bx-user"></i>
         <div data-i18n="Dashboards">Suppliers</div>
       </a>
       <ul class="menu-sub">
@@ -111,108 +111,30 @@
 
 
     <li class="menu-header small text-uppercase">
-      <span class="menu-header-text">Apps &amp; Pages</span>
+      <span class="menu-header-text">Settings</span>
     </li>
     <!-- Apps -->
-    
-    <li class="menu-item">
-      <a
-        href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/vertical-menu-template/app-chat.html"
-        target="_blank"
-        class="menu-link">
-        <i class="menu-icon tf-icons bx bx-chat"></i>
-        <div data-i18n="Chat">Chat</div>
-        <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto">Pro</div>
-      </a>
-    </li>
-    <li class="menu-item">
-      <a
-        href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/vertical-menu-template/app-calendar.html"
-        target="_blank"
-        class="menu-link">
-        <i class="menu-icon tf-icons bx bx-calendar"></i>
-        <div data-i18n="Calendar">Calendar</div>
-        <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto">Pro</div>
-      </a>
-    </li>
-    <li class="menu-item">
-      <a
-        href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/vertical-menu-template/app-kanban.html"
-        target="_blank"
-        class="menu-link">
-        <i class="menu-icon tf-icons bx bx-grid"></i>
-        <div data-i18n="Kanban">Kanban</div>
-        <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto">Pro</div>
-      </a>
-    </li>
-    <!-- Pages -->
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-dock-top"></i>
-        <div data-i18n="Account Settings">Account Settings</div>
+        
+        <i class="menu-icon tf-icons bx bx-user-detail"></i>
+        <div data-i18n="Dashboards">Users</div>
       </a>
       <ul class="menu-sub">
         <li class="menu-item">
-          <a href="pages-account-settings-account.html" class="menu-link">
-            <div data-i18n="Account">Account</div>
+          <a href="<?= $baseurl ?>supplier_add.php" class="menu-link">
+            <div data-i18n="CRM">Add New</div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="pages-account-settings-notifications.html" class="menu-link">
-            <div data-i18n="Notifications">Notifications</div>
+          <a href="<?= $baseurl ?>supplier_list.php" class="menu-link">
+            <div data-i18n="CRM">List</div>
           </a>
         </li>
-        <li class="menu-item">
-          <a href="pages-account-settings-connections.html" class="menu-link">
-            <div data-i18n="Connections">Connections</div>
-          </a>
-        </li>
+        
       </ul>
     </li>
 
-        <li class="menu-item">
-          <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-            <div data-i18n="Authentications">Authentications</div>
-          </a>
-          <ul class="menu-sub">
-            <li class="menu-item">
-              <a href="login.php" class="menu-link">
-                
-                <div data-i18n="Basic">Login</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="register.php" class="menu-link">
-                <div data-i18n="Basic">Register</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="" class="menu-link">
-                <div data-i18n="Basic">Forgot Password</div>
-              </a>
-            </li>
-          </ul>
-        </li>
-        
-        <li class="menu-item">
-          <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-            <div data-i18n="Misc">Misc</div>
-          </a>
-          <ul class="menu-sub">
-            <li class="menu-item">
-              <a href="pages-misc-error.html" class="menu-link">
-                <div data-i18n="Error">Error</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="pages-misc-under-maintenance.html" class="menu-link">
-                <div data-i18n="Under Maintenance">Under Maintenance</div>
-              </a>
-            </li>
-          </ul>
-        </li>
     <!-- Components -->
     <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
     <!-- Cards -->

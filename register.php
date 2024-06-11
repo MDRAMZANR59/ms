@@ -1,8 +1,6 @@
-<?php 
-    session_start();
+<?php
     $baseurl="http://localhost/ms/";
     include_once('class/crud.php');
-
 ?>
 <!DOCTYPE html>
 <html
@@ -121,7 +119,8 @@
               <h4 class="mb-2">Adventure starts here 🚀</h4>
               <p class="mb-4">Make your app management easy and fun!</p>
 
-              <form id="formAuthentication" class="mb-3" action="index.php">
+              <form id="formAuthentication" class="mb-3" method="post" action="">
+                
                 <div class="mb-3">
                   <label for="username" class="form-label">Username</label>
                   <input
@@ -141,16 +140,6 @@
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                   </div>
                 </div>
-
-                <div class="mb-3">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
-                    <label class="form-check-label" for="terms-conditions">
-                      I agree to
-                      <a href="javascript:void(0);">privacy policy & terms</a>
-                    </label>
-                  </div>
-                </div>
                 <button class="btn btn-primary d-grid w-100">Sign up</button>
               </form>
 
@@ -159,11 +148,11 @@
                         $crud=new crud();
                         $_POST['password']=sha1($_POST['password']);
                         $_POST['created_at']=date('Y-m-d H:i:s');
-                        $rs=$crud->common_create('login',$_POST);
+                        $rs=$crud->common_create('auth',$_POST);
                         if($rs['data']){
-                            header('location:login.php');
+                          echo "<script>window.location='{$baseurl}login.php'</script>";
                         }else{
-                            print_r($rs['error']);
+                          print_r($rs['error']);
                         }
                     }
                     

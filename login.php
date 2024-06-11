@@ -122,14 +122,14 @@
               <h4 class="mb-2">Welcome to MS! 👋</h4>
               <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
-              <form id="formAuthentication" class="mb-3" action="index.php">
+              <form id="formAuthentication" class="mb-3" method="post" action="">
                 <div class="mb-3">
                   <label for="email" class="form-label">Email or Username</label>
                   <input
                     type="text"
                     class="form-control"
                     id="email"
-                    name="email-username"
+                    name="username"
                     placeholder="Enter your email or username"
                     autofocus />
                 </div>
@@ -151,12 +151,7 @@
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                   </div>
                 </div>
-                <div class="mb-3">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="remember-me" />
-                    <label class="form-check-label" for="remember-me"> Remember Me </label>
-                  </div>
-                </div>
+                
                 <div class="mb-3">
                   <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
                 </div>
@@ -166,12 +161,14 @@
                     if($_POST){
                         $crud=new crud();
                         $_POST['password']=sha1($_POST['password']);
-                        $rs=$crud->common_select_single('login','*',$_POST);
+                        $rs=$crud->common_select_single('auth','*',$_POST);
                         if($rs['data']){
                             $_SESSION['loggedin']="true";
+                            $_SESSION['id']=$rs['data']->id;
+                            $_SESSION['name']=$rs['data']->name;
                             $_SESSION['username']=$rs['data']->username;
                             $_SESSION['email']=$rs['data']->email;
-                            header('location:index.php');
+                            echo "<script>window.location='{$baseurl}index.php'</script>";
                         }else{
                             echo "Please check your user name and password again.";
                         }

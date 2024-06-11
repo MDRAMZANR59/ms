@@ -1,11 +1,11 @@
-<!-- <?php
-    // session_start();
-    // if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']){
+<?php
+    session_start();
+    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']){
 
-    // }else{
-    //     header('location:index.php');
-    // }
-?> -->
+    }else{
+        header('location:login.php');
+    }
+?>
 <?php 
 include_once('class/crud.php');
 $mysqli=new crud();
@@ -128,8 +128,7 @@ $baseurl="http://localhost/ms/";
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-medium d-block">John Doe</span>
-                            <small class="text-muted">Admin</small>
+                            <span class="fw-medium d-block"><?= $_SESSION['name'] ?></span>
                           </div>
                         </div>
                       </a>
@@ -144,25 +143,7 @@ $baseurl="http://localhost/ms/";
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="bx bx-cog me-2"></i>
-                        <span class="align-middle">Settings</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <span class="d-flex align-items-center align-middle">
-                          <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                          <span class="flex-grow-1 align-middle ms-1">Billing</span>
-                          <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="javascript:void(0);">
+                      <a class="dropdown-item" href="<?= $baseurl ?>logout.php">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>
