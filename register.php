@@ -114,7 +114,7 @@
                       </g>
                     </svg>
                   </span>
-                  <span class="app-brand-text demo text-body fw-bold">MS</span>
+                  <span class="app-brand-text demo text-body fw-bold">Registration</span>
                 </a>
               </div>
               <!-- /Logo -->
