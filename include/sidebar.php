@@ -177,17 +177,18 @@
           </a>
           <ul class="menu-sub">
             <li class="menu-item">
-              <a href="login.php" class="menu-link" target="_blank">
+              <a href="login.php" class="menu-link">
+                
                 <div data-i18n="Basic">Login</div>
               </a>
             </li>
             <li class="menu-item">
-              <a href="register.php" class="menu-link" target="_blank">
+              <a href="register.php" class="menu-link">
                 <div data-i18n="Basic">Register</div>
               </a>
             </li>
             <li class="menu-item">
-              <a href="" class="menu-link" target="_blank">
+              <a href="" class="menu-link">
                 <div data-i18n="Basic">Forgot Password</div>
               </a>
             </li>
