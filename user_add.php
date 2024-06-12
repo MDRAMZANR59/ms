@@ -26,24 +26,24 @@
                     <label class="form-label" for="contact ">Contact</label>
                     <input type="text" name="contact" id="contact" class="form-control" placeholder="Enter Your Contact Number" />
                 </div>
-                <!-- <div class="mb-3">
+                <div class="mb-3">
                     <label class="form-label" for="photo">Photo</label>
                     <input type="file" name="photo" id="photo" class="form-control" required />
-                </div> -->
+                </div>
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>
             <?php 
                 if($_POST){
-                //     if($_FILES){
-                //         $img=$_FILES["image"];
+                    if($_FILES){
+                        $img=$_FILES["image"];
                     
-                //             $msg="File upload fail";
+                            $msg="File upload fail";
 
-                //             $rs=move_uploaded_file($img['tmp_name'],$img['name']);
-                //     if($rs){
-                //         $msg="File uploaded";
-                //     }             
-                // }
+                            $rs=move_uploaded_file($img['tmp_name'],$img['name']);
+                    if($rs){
+                        $msg="File uploaded";
+                    }             
+                }
                     
                     
                     $_POST['created_at']=date('Y-m-d H:i:s');
