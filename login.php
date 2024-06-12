@@ -1,6 +1,7 @@
 <?php 
     session_start();
     $baseurl="http://localhost/ms/";
+    include_once('class/crud.php');
 
 ?>
 <!DOCTYPE html>
@@ -18,7 +19,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Login Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Welcome To MS</title>
 
     <meta name="description" content="" />
 
@@ -114,30 +115,30 @@
                       </g>
                     </svg>
                   </span>
-                  <span class="app-brand-text demo text-body fw-bold">Sneat</span>
+                  <span class="app-brand-text demo text-body fw-bold">MS</span>
                 </a>
               </div>
               <!-- /Logo -->
-              <h4 class="mb-2">Welcome to Sneat! 👋</h4>
+              <h4 class="mb-2">Welcome to MS! 👋</h4>
               <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
-              <form id="formAuthentication" class="mb-3" action="index.html">
+              <form id="formAuthentication" class="mb-3" method="post" action="">
                 <div class="mb-3">
                   <label for="email" class="form-label">Email or Username</label>
                   <input
                     type="text"
                     class="form-control"
                     id="email"
-                    name="email-username"
+                    name="username"
                     placeholder="Enter your email or username"
                     autofocus />
                 </div>
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
                     <label class="form-label" for="password">Password</label>
-                    <a href="auth-forgot-password-basic.html">
+                    <!-- <a href="auth-forgot-password-basic.html">
                       <small>Forgot Password?</small>
-                    </a>
+                    </a> -->
                   </div>
                   <div class="input-group input-group-merge">
                     <input
@@ -145,34 +146,38 @@
                       id="password"
                       class="form-control"
                       name="password"
-                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                      placeholder="Enter your password"
                       aria-describedby="password" />
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                   </div>
                 </div>
-                <div class="mb-3">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="remember-me" />
-                    <label class="form-check-label" for="remember-me"> Remember Me </label>
-                  </div>
-                </div>
+                
                 <div class="mb-3">
                   <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
                 </div>
               </form>
 
-                <?php
+                  <?php
                     if($_POST){
-                        echo "jo";
-                        $_SESSION['loggedin']="true";
-                        header('location:dashboard.php');
+                        $crud=new crud();
+                        $_POST['password']=sha1($_POST['password']);
+                        $rs=$crud->common_select_single('auth','*',$_POST);
+                        if($rs['data']){
+                            $_SESSION['loggedin']="true";
+                            $_SESSION['id']=$rs['data']->id;
+                            $_SESSION['name']=$rs['data']->name;
+                            $_SESSION['username']=$rs['data']->username;
+                            $_SESSION['email']=$rs['data']->email;
+                            echo "<script>window.location='{$baseurl}index.php'</script>";
+                        }else{
+                            echo "Please check your user name and password again.";
+                        }
                     }
-                    print_r ($_POST);
                 ?>
 
               <p class="text-center">
                 <span>New on our platform?</span>
-                <a href="auth-register-basic.html">
+                <a href="register.php">
                   <span>Create an account</span>
                 </a>
               </p>
@@ -185,14 +190,14 @@
 
     <!-- / Content -->
 
-    <div class="buy-now">
+    <!-- <div class="buy-now">
       <a
         href="https://themeselection.com/item/sneat-bootstrap-html-admin-template/"
         target="_blank"
         class="btn btn-danger btn-buy-now"
         >Upgrade to Pro</a
       >
-    </div>
+    </div> -->
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
