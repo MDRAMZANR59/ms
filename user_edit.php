@@ -35,10 +35,10 @@
                     <label class="form-label" for="contact ">Contact</label>
                     <input type="text" name="contact" id="contact" class="form-control" placeholder="Enter Your Contact Number" />
                 </div>
-                <!-- <div class="mb-3">
+                <div class="mb-3">
                     <label class="form-label" for="photo">Photo</label>
                     <input type="file" name="photo" id="photo" class="form-control" required />
-                </div> -->
+                </div>
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>
             <?php 
