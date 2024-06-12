@@ -122,12 +122,12 @@
       </a>
       <ul class="menu-sub">
         <li class="menu-item">
-          <a href="<?= $baseurl ?>supplier_add.php" class="menu-link">
+          <a href="<?= $baseurl ?>user_add.php" class="menu-link">
             <div data-i18n="CRM">Add New</div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="<?= $baseurl ?>supplier_list.php" class="menu-link">
+          <a href="<?= $baseurl ?>user_list.php" class="menu-link">
             <div data-i18n="CRM">List</div>
           </a>
         </li>
