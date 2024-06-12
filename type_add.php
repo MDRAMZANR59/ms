@@ -4,7 +4,7 @@
 <!-- Content -->
 
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="py-3 mb-4"><span class="text-muted fw-light">type/</span> Add New</h4>
+    <h4 class="py-3 mb-4"><span class="text-muted fw-light">Type/</span> Add New</h4>
 
     <!-- Basic Layout -->
     <div class="row">
@@ -17,11 +17,11 @@
             <form method="post" action="">
                 <div class="mb-3">
                     <label class="form-label" for="id">id</label>
-                    <input type="text" name="name" class="form-control" id="id" placeholder="John Doe" />
+                    <input type="text" name="id" class="form-control" id="id" placeholder="John Doe" />
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="type">type No</label>
-                    <input type="text" name="contact" id="type" class="form-control" placeholder="658 799 8941" />
+                    <input type="text" name="type" id="type" class="form-control" placeholder="658 799 8941" />
                 </div>
 
                 <button type="submit" class="btn btn-primary">Save</button>

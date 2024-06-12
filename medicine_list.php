@@ -3,7 +3,7 @@
  
 <script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/datatables.min.js"></script>
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="py-3 mb-4"><span class="text-muted fw-light">medicine /</span> List</h4>
+        <h4 class="py-3 mb-4"><span class="text-muted fw-light">medicine </span> List</h4>
 
         <!-- Basic Bootstrap Table -->
         <div class="card">

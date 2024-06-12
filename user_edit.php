@@ -25,19 +25,19 @@
             <form method="post" action="" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label class="form-label" for="fullname">Full Name</label>
-                    <input type="text" name="name" class="form-control" id="fullname" placeholder="John Doe" required />
+                    <input type="text" name="name" class="form-control" id="fullname" placeholder="John Doe" value="<?= $olddata->name ?>" required />
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="email">E->mail</label>
-                    <input type="text" name="email" id="email" class="form-control" placeholder="abc@email.com" required />
+                    <input type="text" name="email" id="email" class="form-control" placeholder="abc@email.com" value="<?= $olddata->email ?>" required />
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="contact ">Contact</label>
-                    <input type="text" name="contact" id="contact" class="form-control" placeholder="Enter Your Contact Number" />
+                    <input type="text" name="contact" id="contact" class="form-control" placeholder="Enter Your Contact Number" value="<?= $olddata->contact ?>" />
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="photo">Photo</label>
-                    <input type="file" name="photo" id="photo" class="form-control" required />
+                    <input type="file" name="photo" id="photo" class="form-control" required value="<?= $olddata->photo ?>" />
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>
