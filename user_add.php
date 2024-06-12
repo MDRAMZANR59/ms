@@ -30,12 +30,12 @@
                     <label class="form-label" for="photo">Photo</label>
                     <input type="file" name="photo" id="photo" class="form-control" required />
                 </div>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" name="" class="btn btn-primary">Save</button>
             </form>
             <?php 
                 if($_POST){
                     if($_FILES){
-                        $img=$_FILES["image"];
+                        $img=$_FILES["photo"];
                     
                             $msg="File upload fail";
 
