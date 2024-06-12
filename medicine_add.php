@@ -25,7 +25,7 @@
                 <div class="mb-3"> 
                     <label class="form-label" for="generic_name">generic_name</label>
                     <input type="text" name="generic_name" id="generic_name" class="form-control"  placeholder="John Doe" />
-                </div>/ 
+                </div> 
                 <div class="mb-3">
                     <label class="form-label" for="dose">dose</label>
                     <input type="text" name="dose" id="dose" class="form-control"  placeholder="John Doe" />

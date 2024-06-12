@@ -33,7 +33,7 @@
                 </div>
                 <div class="mb-3"> 
                     <label class="form-label" for="generic-name">generic-name</label>
-                    <input type="text" name="generic-name" id="generic-name" class="form-control" value="<?= $olddata->generic_name ?>" />
+                    <input type="text" name="generic_name" id="generic_name" class="form-control" value="<?= $olddata->generic_name ?>" />
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="dose">dose</label>
@@ -51,7 +51,7 @@
             </form>
             <?php 
                 if($_POST){
-                    $_POST['udated_at']=date('Y-m-d H:i:s');
+                    $_POST['updated_at']=date('Y-m-d H:i:s');
                     $_POST['updated_by']=1;
                     $rs=$mysqli->common_update('medicine',$_POST,$con);
                     if($rs){

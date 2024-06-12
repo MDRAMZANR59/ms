@@ -3,7 +3,7 @@
 <!-- Content -->
 
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="py-3 mb-4"><span class="text-muted fw-light">type/</span> Update</h4>
+    <h4 class="py-3 mb-4"><span class="text-muted fw-light">Type/</span> Update</h4>
     <?php 
         $olddata=array();
         $con['id']=$_GET['id'];
@@ -25,18 +25,18 @@
             <form method="post" action="">
                 <div class="mb-3">
                     <label class="form-label" for="id">id</label>
-                    <input type="text" name="name" class="form-control" id="fullname" value="<?= $olddata->name ?>" />
+                    <input type="text" name="id" class="form-control" id="fullname" value="<?= $olddata->id ?>" />
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="type">Type No</label>
-                    <input type="text" name="contact" id="phone" class="form-control phone-mask" value="<?= $olddata->contact ?>" />
+                    <input type="text" name="type" id="type" class="form-control type-mask" value="<?= $olddata->type ?>" />
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>
             
             <?php 
                 if($_POST){
-                    $_POST['udated_at']=date('Y-m-d H:i:s');
+                    $_POST['updated_at']=date('Y-m-d H:i:s');
                     $_POST['updated_by']=1;
                     $rs=$mysqli->common_update('type',$_POST,$con);
                     if($rs){
