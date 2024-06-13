@@ -16,12 +16,8 @@
         <div class="card-body">
             <form method="post" action="">
                 <div class="mb-3">
-                    <label class="form-label" for="id">id</label>
-                    <input type="text" name="id" class="form-control" id="id" placeholder="John Doe" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="type">type No</label>
-                    <input type="text" name="type" id="type" class="form-control" placeholder="658 799 8941" />
+                    <label class="form-label" for="type">type</label>
+                    <input type="text" name="type" id="type" class="form-control" />
                 </div>
 
                 <button type="submit" class="btn btn-primary">Save</button>
@@ -29,7 +25,7 @@
             <?php 
                 if($_POST){
                     $_POST['created_at']=date('Y-m-d H:i:s');
-                    $_POST['created_by']=1;
+                    $_POST['created_by']=$_SESSION['id'];
                     $rs=$mysqli->common_create('type',$_POST);
                     if($rs){
                         if($rs['data']){

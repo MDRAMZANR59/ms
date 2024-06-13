@@ -111,6 +111,25 @@
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-user"></i>
+        <div data-i18n="Dashboards">Purchase</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="<?= $baseurl ?>purchase_add.php" class="menu-link">
+            <div data-i18n="CRM">Add New</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="<?= $baseurl ?>purchase_list.php" class="menu-link">
+            <div data-i18n="CRM">List</div>
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+    <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-user"></i>
         <div data-i18n="Dashboards">Medicine</div>
       </a>
       <ul class="menu-sub">

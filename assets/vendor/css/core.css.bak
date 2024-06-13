@@ -11107,7 +11107,7 @@ button.list-group-item-gray.active {
 
 .text-muted {
   --bs-text-opacity: 1;
-  color: #000000 !important;
+  color: #a1acb8 !important;
 }
 
 .text-black-50 {

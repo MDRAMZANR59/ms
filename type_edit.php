@@ -24,12 +24,8 @@
         <div class="card-body">
             <form method="post" action="">
                 <div class="mb-3">
-                    <label class="form-label" for="id">id</label>
-                    <input type="text" name="id" class="form-control" id="fullname" value="<?= $olddata->id ?>" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="type">Type No</label>
-                    <input type="text" name="type" id="type" class="form-control type-mask" value="<?= $olddata->type ?>" />
+                    <label class="form-label" for="type">Type</label>
+                    <input type="text" name="type" id="type" class="form-control" value="<?= $olddata->type ?>" />
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>
@@ -37,7 +33,7 @@
             <?php 
                 if($_POST){
                     $_POST['updated_at']=date('Y-m-d H:i:s');
-                    $_POST['updated_by']=1;
+                    $_POST['updated_by']=$_SESSION['id'];
                     $rs=$mysqli->common_update('type',$_POST,$con);
                     if($rs){
                         if($rs['data']){

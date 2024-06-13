@@ -23,29 +23,44 @@
         </div>
         <div class="card-body">
             <form method="post" action="">
+                
                 <div class="mb-3">
-                    <label class="form-label" for="id">id</label>
-                    <input type="text" name="id" class="form-control" id="id" value="<?= $olddata->id ?>" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="brand_name">brand_name</label>
+                    <label class="form-label" for="brand_name">brand name</label>
                     <input type="text" name="brand_name" id="brand_name" class="form-control brand_name-mask" value="<?= $olddata->brand_name ?>" />
                 </div>
                 <div class="mb-3"> 
-                    <label class="form-label" for="generic-name">generic-name</label>
+                    <label class="form-label" for="generic-name">generic name</label>
                     <input type="text" name="generic_name" id="generic_name" class="form-control" value="<?= $olddata->generic_name ?>" />
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="dose">dose</label>
                     <input type="text" name="dose" id="dose" class="form-control" value="<?= $olddata->dose ?>" />
                 </div>
+                <div class="mb-3">
+                    <label class="form-label" for="price">Price</label>
+                    <input type="text" name="price" id="price" class="form-control" value="<?= $olddata->price ?>" />
+                </div>
                  <div class="mb-3">
                     <label class="form-label" for="type_id">type_id</label>
-                    <input type="text" name="type_id" id="type_id" class="form-control" value="<?= $olddata->type_id ?>" />
+                    <select class="form-control form-select" required name="type_id" id="type_id">
+                        <option value="">Select Type</option>
+                        <?php 
+                            $result=$mysqli->common_select('type');
+                            if($result){
+                                if($result['data']){
+                                    $i=1;
+                                    foreach($result['data'] as $d){
+                        ?>
+                            <option value="<?= $d->id ?>" <?= $d->id==$olddata->type_id ? "selected" :"" ?>> <?= $d->type ?></option>
+                        <?php } } } ?>
+                    </select>
                 </div>
                  <div class="mb-3">
                     <label class="form-label" for="status">status</label>
-                    <input type="text" name="status" id="status" class="form-control" value="<?= $olddata->status ?>" />
+                    <select class="form-control form-select" name="status" id="status">
+                        <option value="1" <?= $olddata->status ? "selected" :"" ?>>Active</option>
+                        <option value="0" <?= !$olddata->status ? "selected" :"" ?>>Inactive</option>
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>

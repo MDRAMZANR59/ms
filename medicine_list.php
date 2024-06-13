@@ -12,19 +12,19 @@
                 <table class="table">
                 <thead>
                     <tr>
-                    <th>#SL</th>
-                    <th>id</th>
-                    <th>brand_name</th>
-                    <th>generic_name</th>
-                    <th>dose</th>
-                    <th>type_id</th>
-                    <th>status</th>
-                    <th>Actions</th>
+                        <th>#SL</th>
+                        <th>Brand Name</th>
+                        <th>Generic Name</th>
+                        <th>Dose</th>
+                        <th>Type</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
                     <?php 
-                        $result=$mysqli->common_select('medicine');
+                        $result=$mysqli->common_select_query("select medicine.id,medicine.brand_name, medicine.generic_name,medicine.price, medicine.dose,  medicine.status, type.type from medicine join type on type.id=medicine.type_id");
                         if($result){
                             if($result['data']){
                                 $i=1;
@@ -33,12 +33,12 @@
                     <tr>
                     
                         <td><?= $i++ ?></td>
-                        <td><?= $data->id ?></td>
                         <td><?= $data->brand_name ?></td>
                         <td><?= $data->generic_name ?></td>
                         <td><?= $data->dose ?></td>
-                        <td><?= $data->type_id ?></td>
-                        <td><?= $data->status ?></td>
+                        <td><?= $data->type ?></td>
+                        <td><?= $data->price ?></td>
+                        <td><?= $data->status ? "Active":"Inactive" ?></td>
                         <td>
                             <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
