@@ -1,26 +1,26 @@
 <?php include('include/header.php') ; ?>
 <!-- Content -->
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="py-3 mb-4"><span class="text-muted fw-light">Purchase/</span> Add New</h4>
+    <h4 class="py-3 mb-4"><span class="text-muted fw-light">Sales/</span> Add New</h4>
 
     <!-- Basic Layout -->
     <div class="row">
     <div class="col-xl">
         <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Purchase Information</h5>
+            <h5 class="mb-0">Sales Information</h5>
         </div>
         <div class="card-body">
             <form class="form" method="post" action="">
                 <div class="row">
                     <div class="col-md-2 mt-2">
-                        <label for="customrName" class="float-end"><h6>Supplier</h6></label>
+                        <label for="customrName" class="float-end"><h6>Customer</h6></label>
                     </div>
                     <div class="col-md-4">
-                        <select class="form-control form-select" name="supplier_id" id="supplier_id">
-                            <option value="">Select Supplier</option>
+                        <select class="form-control form-select" name="customer_id" id="customer_id">
+                            <option value="">Select Customer</option>
                             <?php 
-                                $result=$mysqli->common_select('supplier');
+                                $result=$mysqli->common_select('customer');
                                 if($result){
                                     if($result['data']){
                                         $i=1;
@@ -35,7 +35,7 @@
                         <label for="date" class="float-end"><h6>Date</h6></label>
                     </div>
                     <div class="col-md-4">
-                        <input type="date" id="purchase_date" class="form-control" value="<?= date("Y-m-d") ?>" name="purchase_date">
+                        <input type="date" id="sales_date" class="form-control" value="<?= date("Y-m-d") ?>" name="sales_date">
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -156,8 +156,8 @@
             </form>
             <?php 
                 if($_POST){
-                    $pur['supplier_id']=$_POST['supplier_id'];
-                    $pur['purchase_date']=$_POST['purchase_date'];
+                    $pur['customer_id']=$_POST['customer_id'];
+                    $pur['sales_date']=$_POST['sales_date'];
                     $pur['qty']=$_POST['total_qty'];
                     $pur['sub_amount']=$_POST['tsubtotal'];
                     $pur['discount']=$_POST['tdiscount'];
@@ -165,23 +165,23 @@
                     $pur['total_amount']=$_POST['tgrandtotal'];
                     $pur['created_at']=date("Y-m-d H:i:s");
                     $pur['created_by']=$_SESSION['id'];
-                    $rs=$mysqli->common_create('purchase',$pur);
+                    $rs=$mysqli->common_create('sales',$pur);
                     if($rs){
                         if($rs['data']){
                             if($_POST['medicine_id']){
                                 foreach($_POST['medicine_id'] as $k => $v){
-                                    $purd['purchase_id']=$rs['data'];
-                                    $purd['purchase_date']=$_POST['purchase_date'];
+                                    $purd['sales_id']=$rs['data'];
+                                    $purd['sales_date']=$_POST['sales_date'];
                                     $purd['medicine_id']=$v;
                                     $purd['qty']=$_POST['qty'][$k];
                                     $purd['price']=$_POST['price'][$k];
                                     $purd['created_at']=date("Y-m-d H:i:s");
                                     $purd['created_by']=$_SESSION['id'];
-                                    $rs=$mysqli->common_create('purchase_details',$purd);
+                                    $rs=$mysqli->common_create('sales_details',$purd);
                                 }
                             }
 
-                            echo "<script>window.location='{$baseurl}purchase_list.php'</script>";
+                            echo "<script>window.location='{$baseurl}sales_list.php'</script>";
                         }else{
                             echo $rs['error'];
                         }
