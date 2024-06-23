@@ -11,7 +11,7 @@
             <h5 class="mb-0">Product Return Information</h5>
         </div>
         <div class="card-body">
-            <form class="form" method="post" action="">
+            <form class="form" method="post" action="">  
                 <div class="row">
                     <div class="col-md-2 mt-2">
                         <label for="customrName" class="float-end"><h6>Supplier</h6></label>
