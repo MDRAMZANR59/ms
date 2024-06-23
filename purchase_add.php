@@ -177,7 +177,17 @@
                                     $purd['price']=$_POST['price'][$k];
                                     $purd['created_at']=date("Y-m-d H:i:s");
                                     $purd['created_by']=$_SESSION['id'];
-                                    $rs=$mysqli->common_create('purchase_details',$purd);
+                                    $prs=$mysqli->common_create('purchase_details',$purd);
+                                    if($prs['data']){
+                                        $purs['purchase_id']=$rs['data'];
+                                        $purs['medicine_id']=$v;
+                                        $purs['qty']=$_POST['qty'][$k];
+                                        $purs['price']=$_POST['price'][$k];
+                                        $purs['stock_date']=$_POST['purchase_date'];
+                                        $purs['created_at']=date("Y-m-d H:i:s");
+                                        $purs['created_by']=$_SESSION['id'];
+                                        $srs=$mysqli->common_create('stock',$purs);
+                                    }
                                 }
                             }
 

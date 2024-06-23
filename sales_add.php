@@ -5,192 +5,202 @@
 
     <!-- Basic Layout -->
     <div class="row">
-    <div class="col-xl">
-        <div class="card mb-4">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Sales Information</h5>
-        </div>
-        <div class="card-body">
-            <form class="form" method="post" action="">
-                <div class="row">
-                    <div class="col-md-2 mt-2">
-                        <label for="customrName" class="float-end"><h6>Customer</h6></label>
+        <div class="col-xl">
+            <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Sales Information</h5>
+            </div>
+            <div class="card-body">
+                <form class="form" method="post" action="">
+                    <div class="row">
+                        <div class="col-md-2 mt-2">
+                            <label for="customrName" class="float-end"><h6>Customer</h6></label>
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-control form-select" name="customer_id" id="customer_id">
+                                <option value="">Select Customer</option>
+                                <?php 
+                                    $result=$mysqli->common_select('customer');
+                                    if($result){
+                                        if($result['data']){
+                                            $i=1;
+                                            foreach($result['data'] as $d){
+                                ?>
+                                    <option value="<?= $d->id ?>" > <?= $d->contact ?> <?= $d->name ?></option>
+                                <?php } } } ?>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-2 mt-2">
+                            <label for="date" class="float-end"><h6>Date</h6></label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="date" id="sales_date" class="form-control" value="<?= date("Y-m-d") ?>" name="sales_date">
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <select class="form-control form-select" name="customer_id" id="customer_id">
-                            <option value="">Select Customer</option>
-                            <?php 
-                                $result=$mysqli->common_select('customer');
-                                if($result){
-                                    if($result['data']){
-                                        $i=1;
-                                        foreach($result['data'] as $d){
-                            ?>
-                                <option value="<?= $d->id ?>" > <?= $d->contact ?> <?= $d->name ?></option>
-                            <?php } } } ?>
-                        </select>
+                    <div class="row mt-3">
+                        <div class="col-md-2 mt-2">
+                            <label for="reference_no" class="float-end"><h6>Product</h6></label>
+                        </div>
+                        <div class="col-md-10">
+                            <select class="form-control form-select" onchange="return_row_with_data(this)" id="product">
+                                <option value="">Select Medicine</option>
+                                <?php 
+                                    $result=$mysqli->common_select_query('select medicine.*, (select sum(qty) from stock where stock.medicine_id=medicine.id) as stock from medicine where deleted_at is null');
+                                    $medicine=array();
+                                    if($result){
+                                        if($result['data']){
+                                            $i=1;
+                                            foreach($result['data'] as $d){
+                                                $medicine[$d->id]=$d;
+                                ?>
+                                    <option value='<?= json_encode($d) ?>' > <?= $d->brand_name ?> <?= $d->generic_name ?> (<?= $d->stock ?>)</option>
+                                <?php } } } ?>
+                            </select>
+                        </div>
                     </div>
                     
-                    <div class="col-md-2 mt-2">
-                        <label for="date" class="float-end"><h6>Date</h6></label>
-                    </div>
-                    <div class="col-md-4">
-                        <input type="date" id="sales_date" class="form-control" value="<?= date("Y-m-d") ?>" name="sales_date">
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-2 mt-2">
-                        <label for="reference_no" class="float-end"><h6>Product</h6></label>
-                    </div>
-                    <div class="col-md-10">
-                        <select class="form-control form-select" onchange="return_row_with_data(this)" id="product">
-                            <option value="">Select Medicine</option>
-                            <?php 
-                                $result=$mysqli->common_select('medicine');
-                                $medicine=array();
-                                if($result){
-                                    if($result['data']){
-                                        $i=1;
-                                        foreach($result['data'] as $d){
-                                            $medicine[$d->id]=$d;
-                            ?>
-                                <option value='<?= json_encode($d) ?>' > <?= $d->brand_name ?> <?= $d->generic_name ?></option>
-                            <?php } } } ?>
-                        </select>
-                    </div>
-                </div>
-                
-                <table class="table mb-5">
-                    <thead>
-                        <tr class="">
-                            <th class="p-2">Product Name</th>
-                            <th class="p-2">Qty</th>
-                            <th class="p-2">Sell Price</th>
-                            <th class="p-2">Amount</th>
-                            <th class="p-2">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="details_data">
+                    <table class="table mb-5">
+                        <thead>
+                            <tr class="">
+                                <th class="p-2">Product Name</th>
+                                <th class="p-2">Qty</th>
+                                <th class="p-2">Sell Price</th>
+                                <th class="p-2">Amount</th>
+                                <th class="p-2">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="details_data">
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
 
 
-                <div class="row mb-5">
-                    <div class="col-12 col-sm-6">
-                        <div class="row">
-                            <div class="col-4 offset-2 mt-2 text-end pe-3">
-                                <label for="" class="form-group"><h6>Total Quantities</h6></label> 
+                    <div class="row mb-5">
+                        <div class="col-12 col-sm-6">
+                            <div class="row">
+                                <div class="col-4 offset-2 mt-2 text-end pe-3">
+                                    <label for="" class="form-group"><h6>Total Quantities</h6></label> 
+                                </div>
+                                <div class="col-4 mt-2">
+                                    <label for="" class="form-group"><h6 id="total_qty">0</h6></label>
+                                    <input type="hidden" name="total_qty" id="total_qty_p">
+                                </div>
                             </div>
-                            <div class="col-4 mt-2">
-                                <label for="" class="form-group"><h6 id="total_qty">0</h6></label>
-                                <input type="hidden" name="total_qty" id="total_qty_p">
+                            <div class="row">
+                                <div class="col-4 offset-2 mt-2 text-end pe-3">
+                                    <label for="" class="form-group"><h6>Discount</h6></label> 
+                                </div>
+                                <div class="col-6 mt-2">
+                                    <input type="text" class="form-control form-group" id="discount" name="discount" onkeyup="check_change()">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4 offset-2 mt-2 text-end pe-3">
+                                    <label for="" class="form-group"><h6>Vat (%)</h6></label> 
+                                </div>
+                                <div class="col-4 mt-2">
+                                    <input type="text" class="form-control form-group" id="vat" onkeyup="check_change()">
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-4 offset-2 mt-2 text-end pe-3">
-                                <label for="" class="form-group"><h6>Discount</h6></label> 
-                            </div>
-                            <div class="col-6 mt-2">
-                                <input type="text" class="form-control form-group" id="discount" name="discount" onkeyup="check_change()">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-4 offset-2 mt-2 text-end pe-3">
-                                <label for="" class="form-group"><h6>Vat (%)</h6></label> 
-                            </div>
-                            <div class="col-4 mt-2">
-                                <input type="text" class="form-control form-group" id="vat" onkeyup="check_change()">
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="col-12 col-sm-6">
-                        <div class="row">
-                            <div class="col-4 offset-4 mt-2 pe-2 text-end">
-                                <label for="" class="form-group"><h6>Subtotal</h6></label> 
+                        <div class="col-12 col-sm-6">
+                            <div class="row">
+                                <div class="col-4 offset-4 mt-2 pe-2 text-end">
+                                    <label for="" class="form-group"><h6>Subtotal</h6></label> 
+                                </div>
+                                <div class="col-4 mt-2 pe-5 text-end">
+                                    <label for="" class="form-group"><h6 id="tsubtotal">0.00</h6></label>
+                                    <input type="hidden" name="tsubtotal" id="tsubtotal_p">
+                                </div>
+                            </div>   
+                            
+                            <div class="row">
+                                <div class="col-4 offset-4 mt-2 pe-2 text-end">
+                                    <label for="" class="form-group"><h6>Discount</h6></label> 
+                                </div>
+                                <div class="col-4 mt-2 pe-5 text-end">
+                                    <label for="" class="form-group"><h6 id="tdiscount">0.00</h6></label>
+                                    <input type="hidden" name="tdiscount" id="tdiscount_p">
+                                </div>
+                            </div>  
+                            <div class="row">
+                                <div class="col-4 offset-4 mt-2 pe-2 text-end">
+                                    <label for="" class="form-group"><h6>Vat</h6></label> 
+                                </div>
+                                <div class="col-4 mt-2 pe-5 text-end">
+                                    <label for="" class="form-group"><h6 id="vat_v">0.00</h6></label>
+                                    <input type="hidden" name="vat" id="vat_p">
+                                </div>
                             </div>
-                            <div class="col-4 mt-2 pe-5 text-end">
-                                <label for="" class="form-group"><h6 id="tsubtotal">0.00</h6></label>
-                                <input type="hidden" name="tsubtotal" id="tsubtotal_p">
-                            </div>
-                        </div>   
-                        
-                        <div class="row">
-                            <div class="col-4 offset-4 mt-2 pe-2 text-end">
-                                <label for="" class="form-group"><h6>Discount</h6></label> 
-                            </div>
-                            <div class="col-4 mt-2 pe-5 text-end">
-                                <label for="" class="form-group"><h6 id="tdiscount">0.00</h6></label>
-                                <input type="hidden" name="tdiscount" id="tdiscount_p">
-                            </div>
-                        </div>  
-                        <div class="row">
-                            <div class="col-4 offset-4 mt-2 pe-2 text-end">
-                                <label for="" class="form-group"><h6>Vat</h6></label> 
-                            </div>
-                            <div class="col-4 mt-2 pe-5 text-end">
-                                <label for="" class="form-group"><h6 id="vat_v">0.00</h6></label>
-                                <input type="hidden" name="vat" id="vat_p">
-                            </div>
+                            
+                            <div class="row">
+                                <div class="col-4 offset-4 mt-2 pe-2 text-end">
+                                    <label for="" class="form-group"><h6>Grand Total</h6></label> 
+                                </div>
+                                <div class="col-4 mt-2 pe-5 text-end">
+                                    <label for="" class="form-group"><h6 id="tgrandtotal">0.00</h6></label>
+                                    <input type="hidden" name="tgrandtotal" id="tgrandtotal_p">
+                                </div>
+                            </div> 
                         </div>
-                        
-                        <div class="row">
-                            <div class="col-4 offset-4 mt-2 pe-2 text-end">
-                                <label for="" class="form-group"><h6>Grand Total</h6></label> 
-                            </div>
-                            <div class="col-4 mt-2 pe-5 text-end">
-                                <label for="" class="form-group"><h6 id="tgrandtotal">0.00</h6></label>
-                                <input type="hidden" name="tgrandtotal" id="tgrandtotal_p">
-                            </div>
-                        </div> 
                     </div>
-                </div>
-                                
-                <div class="row">
-                    <div class="col-12 d-flex justify-content-end">
-                        <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
-                        
+                                    
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
+                            
+                        </div>
                     </div>
-                </div>
-            </form>
-            <?php 
-                if($_POST){
-                    $pur['customer_id']=$_POST['customer_id'];
-                    $pur['sales_date']=$_POST['sales_date'];
-                    $pur['qty']=$_POST['total_qty'];
-                    $pur['sub_amount']=$_POST['tsubtotal'];
-                    $pur['discount']=$_POST['tdiscount'];
-                    $pur['vat']=$_POST['vat'];
-                    $pur['total_amount']=$_POST['tgrandtotal'];
-                    $pur['created_at']=date("Y-m-d H:i:s");
-                    $pur['created_by']=$_SESSION['id'];
-                    $rs=$mysqli->common_create('sales',$pur);
-                    if($rs){
-                        if($rs['data']){
-                            if($_POST['medicine_id']){
-                                foreach($_POST['medicine_id'] as $k => $v){
-                                    $purd['sales_id']=$rs['data'];
-                                    $purd['sales_date']=$_POST['sales_date'];
-                                    $purd['medicine_id']=$v;
-                                    $purd['qty']=$_POST['qty'][$k];
-                                    $purd['price']=$_POST['price'][$k];
-                                    $purd['created_at']=date("Y-m-d H:i:s");
-                                    $purd['created_by']=$_SESSION['id'];
-                                    $rs=$mysqli->common_create('sales_details',$purd);
+                </form>
+                <?php 
+                    if($_POST){
+                        $pur['customer_id']=$_POST['customer_id'];
+                        $pur['sales_date']=$_POST['sales_date'];
+                        $pur['qty']=$_POST['total_qty'];
+                        $pur['sub_amount']=$_POST['tsubtotal'];
+                        $pur['discount']=$_POST['tdiscount'];
+                        $pur['vat']=$_POST['vat'];
+                        $pur['total_amount']=$_POST['tgrandtotal'];
+                        $pur['created_at']=date("Y-m-d H:i:s");
+                        $pur['created_by']=$_SESSION['id'];
+                        $rs=$mysqli->common_create('sales',$pur);
+                        if($rs){
+                            if($rs['data']){
+                                if($_POST['medicine_id']){
+                                    foreach($_POST['medicine_id'] as $k => $v){
+                                        $purd['sales_id']=$rs['data'];
+                                        $purd['sales_date']=$_POST['sales_date'];
+                                        $purd['medicine_id']=$v;
+                                        $purd['qty']=$_POST['qty'][$k];
+                                        $purd['price']=$_POST['price'][$k];
+                                        $purd['created_at']=date("Y-m-d H:i:s");
+                                        $purd['created_by']=$_SESSION['id'];
+                                        $prs=$mysqli->common_create('sales_details',$purd);
+                                        if($prs['data']){
+                                            $purs['sales_id']=$rs['data'];
+                                            $purs['medicine_id']=$v;
+                                            $purs['qty']="-".$_POST['qty'][$k];
+                                            $purs['price']=$_POST['price'][$k];
+                                            $purs['stock_date']=$_POST['purchase_date'];
+                                            $purs['created_at']=date("Y-m-d H:i:s");
+                                            $purs['created_by']=$_SESSION['id'];
+                                            $srs=$mysqli->common_create('stock',$purs);
+                                        }
+                                    }
                                 }
-                            }
 
-                            echo "<script>window.location='{$baseurl}sales_list.php'</script>";
-                        }else{
-                            echo $rs['error'];
+                                echo "<script>window.location='{$baseurl}sales_list.php'</script>";
+                            }else{
+                                echo $rs['error'];
+                            }
                         }
                     }
-                }
-            ?>
+                ?>
+            </div>
+            </div>
         </div>
-        </div>
-    </div>
     
     </div>
 </div>
@@ -240,13 +250,16 @@
     }
 
     //CALCUALATED SALES PRICE
-    function get_cal(qty,mid){
-        var price = (isNaN(parseFloat(medicine_data[mid].price))) ? 0 :parseFloat(medicine_data[mid].price); 
-        var qty = (isNaN(parseFloat(qty.value))) ? 0 :parseFloat(qty.value); 
-    
+    function get_cal(gqty,mid){
+        var price = (isNaN(parseFloat(medicine_data[mid].price))) ? 0 :parseFloat(medicine_data[mid].price);
+        var qty = (isNaN(parseFloat(gqty.value))) ? 0 :parseFloat(gqty.value); 
+        var stock = (isNaN(parseFloat(medicine_data[mid].stock))) ? 0 :parseFloat(medicine_data[mid].stock); 
+        if(stock < qty){
+            gqty.value=stock;
+            qty=stock;
+        }
         var subtotal = price * qty;
             document.getElementById('price'+mid).innerHTML=subtotal
-
         total_calculate();
     }
     //END
