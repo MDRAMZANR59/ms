@@ -180,7 +180,7 @@
           </a>
         </li>
         <li class="menu-item">
-          <a href="<?= $baseurl ?>purchase_list.php" class="menu-link">
+          <a href="<?= $baseurl ?>purchase_return_list.php" class="menu-link">
             <div data-i18n="CRM">Return List</div>
           </a>
         </li>

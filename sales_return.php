@@ -17,7 +17,7 @@
                         <label for="customrName" class="float-end"><h6>Customer</h6></label>
                     </div>
                     <div class="col-md-4">
-                        <select class="form-control form-select" name="customer_id" id="customer_id">
+                        <select class="form-control form-select" name="supplier_id" id="supplier_id">
                             <option value="">Select Customer</option>
                             <?php 
                                 $result=$mysqli->common_select('customer');
@@ -156,7 +156,7 @@
             </form>
             <?php 
                 if($_POST){
-                    $pur['customer_id']=$_POST['customer_id'];
+                    $pur['supplier_id']=$_POST['supplier_id'];
                     $pur['purchase_date']=$_POST['purchase_date'];
                     $pur['qty']=$_POST['total_qty'];
                     $pur['sub_amount']=$_POST['tsubtotal'];
