@@ -181,7 +181,7 @@
         </li>
         <li class="menu-item">
           <a href="<?= $baseurl ?>purchase_list.php" class="menu-link">
-            <div data-i18n="CRM">List</div>
+            <div data-i18n="CRM">Return List</div>
           </a>
         </li>
         
@@ -195,13 +195,13 @@
       </a>
       <ul class="menu-sub">
         <li class="menu-item">
-          <a href="<?= $baseurl ?>purchase_return.php" class="menu-link">
+          <a href="<?= $baseurl ?>sales_return.php" class="menu-link">
             <div data-i18n="CRM">Add New</div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="<?= $baseurl ?>purchase_list.php" class="menu-link">
-            <div data-i18n="CRM">List</div>
+          <a href="<?= $baseurl ?>sales_list.php" class="menu-link">
+            <div data-i18n="CRM">Return List</div>
           </a>
         </li>
         
