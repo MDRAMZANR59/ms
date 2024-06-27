@@ -16,7 +16,7 @@ git <?php include('include/header.php') ; ?>
                     <th>Name</th>
                     <th>E-mail</th>
                     <th>Contact</th>
-                    <th>Image</th>
+                    <!-- <th>Image</th> -->
                     <th>Actions</th>
                     </tr>
                 </thead>
@@ -34,8 +34,8 @@ git <?php include('include/header.php') ; ?>
                         <td><?= $data->name ?></td>
                         <td><?= $data->email ?></td>
                         <td><?= $data->contact ?></td>
-                        <td><img src="<?= $data->photo ?>" alt="User Photo" style="max-width: 100px height: 50px;"></td>
-                        <td>
+                        <!-- <td><img src="<?= $data->photo ?>" alt="User Photo" style="max-width: 100px height: 50px;"></td>
+                        <td> -->
                             <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                                 <i class="bx bx-dots-vertical-rounded"></i>
