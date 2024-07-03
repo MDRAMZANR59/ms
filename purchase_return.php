@@ -1,29 +1,28 @@
 <?php include('include/header.php') ; ?>
 <!-- Content -->
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="py-3 mb-4"><span class="text-muted fw-light">Sales/</span> Add New</h4>
+    <h4 class="py-3 mb-4"><span class="text-muted fw-light">Purchase Return/</span> Add New</h4>
 
     <!-- Basic Layout -->
     <div class="row">
         <div class="col-xl">
             <div class="card mb-4">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="mb-0">Sales Information</h5>
+                <h5 class="mb-0">Product Return Information</h5>
             </div>
             <div class="card-body">
                 <form class="form" method="post" action="">
                     <div class="row">
                         <div class="col-md-2 mt-2">
-                            <label for="customrName" class="float-end"><h6>Customer</h6></label>
+                            <label for="customrName" class="float-end"><h6>Supplier</h6></label>
                         </div>
                         <div class="col-md-4">
-                            <select class="form-control form-select" name="customer_id" id="customer_id">
-                                <option value="">Select Customer</option>
+                            <select class="form-control form-select" name="supplier_id" id="supplier_id">
+                                <option value="">Select Supplier</option>
                                 <?php 
-                                    $result=$mysqli->common_select('customer');
+                                    $result=$mysqli->common_select('supplier');
                                     if($result){
                                         if($result['data']){
-                                            $i=1;
                                             foreach($result['data'] as $d){
                                 ?>
                                     <option value="<?= $d->id ?>" > <?= $d->contact ?> <?= $d->name ?></option>
@@ -35,7 +34,13 @@
                             <label for="date" class="float-end"><h6>Date</h6></label>
                         </div>
                         <div class="col-md-4">
-                            <input type="date" id="sales_date" class="form-control" value="<?= date("Y-m-d") ?>" name="sales_date">
+                            <input type="date" id="purchase_return_date" class="form-control" value="<?= date("Y-m-d") ?>" name="purchase_return_date">
+                        </div>
+                        <div class="col-md-2 mt-3">
+                            <label for="date" class="float-end"><h6>Purchase Ref</h6></label>
+                        </div>
+                        <div class="col-md-4 mt-2">
+                            <input type="text" id="ref" class="form-control" name="ref">
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -156,8 +161,8 @@
                 </form>
                 <?php 
                     if($_POST){
-                        $pur['customer_id']=$_POST['customer_id'];
-                        $pur['sales_date']=$_POST['sales_date'];
+                        $pur['supplier_id']=$_POST['supplier_id'];
+                        $pur['purchase_return_date']=$_POST['purchase_return_date'];
                         $pur['qty']=$_POST['total_qty'];
                         $pur['sub_amount']=$_POST['tsubtotal'];
                         $pur['discount']=$_POST['tdiscount'];
@@ -165,25 +170,25 @@
                         $pur['total_amount']=$_POST['tgrandtotal'];
                         $pur['created_at']=date("Y-m-d H:i:s");
                         $pur['created_by']=$_SESSION['id'];
-                        $rs=$mysqli->common_create('sales',$pur);
+                        $rs=$mysqli->common_create('purchase_return',$pur);
                         if($rs){
                             if($rs['data']){
                                 if($_POST['medicine_id']){
                                     foreach($_POST['medicine_id'] as $k => $v){
-                                        $purd['sales_id']=$rs['data'];
-                                        $purd['sales_date']=$_POST['sales_date'];
+                                        $purd['purchase_return_id']=$rs['data'];
+                                        $purd['purchase_return_date']=$_POST['purchase_return_date'];
                                         $purd['medicine_id']=$v;
                                         $purd['qty']=$_POST['qty'][$k];
                                         $purd['price']=$_POST['price'][$k];
                                         $purd['created_at']=date("Y-m-d H:i:s");
                                         $purd['created_by']=$_SESSION['id'];
-                                        $prs=$mysqli->common_create('sales_details',$purd);
+                                        $prs=$mysqli->common_create('purchase_return_details',$purd);
                                         if($prs['data']){
-                                            $purs['sales_id']=$rs['data'];
+                                            $purs['purchase_return_id']=$rs['data'];
                                             $purs['medicine_id']=$v;
                                             $purs['qty']="-".$_POST['qty'][$k];
                                             $purs['price']=$_POST['price'][$k];
-                                            $purs['stock_date']=$_POST['purchase_date'];
+                                            $purs['stock_date']=$_POST['purchase_return_date'];
                                             $purs['created_at']=date("Y-m-d H:i:s");
                                             $purs['created_by']=$_SESSION['id'];
                                             $srs=$mysqli->common_create('stock',$purs);
@@ -191,7 +196,7 @@
                                     }
                                 }
 
-                                echo "<script>window.location='{$baseurl}sales_list.php'</script>";
+                                echo "<script>window.location='{$baseurl}purchase_return_list.php'</script>";
                             }else{
                                 echo $rs['error'];
                             }
@@ -237,9 +242,7 @@
                         <td class="p-2">
                             <span id="price${data.id}" class="subprice"> </span>
                         </td>
-                        <td class="p-2">
-                            <button class="btn btn-link text-danger" type="button" onclick="removerow(this)">&times;</button>
-                        </td>
+                        <td class="p-2">Action</td>
                     </tr>`
             document.getElementById('details_data').insertRow().innerHTML=row;
             selected_medicine.push(data.id)
