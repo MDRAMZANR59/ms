@@ -168,6 +168,62 @@
       </ul>
     </li>
 
+    <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-user"></i>
+        <div data-i18n="Dashboards">Purchase Return</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="<?= $baseurl ?>purchase_return.php" class="menu-link">
+            <div data-i18n="CRM">Add New</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="<?= $baseurl ?>purchase_return_list.php" class="menu-link">
+            <div data-i18n="CRM">Return List</div>
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+
+    <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-user"></i>
+        <div data-i18n="Dashboards">Sales Return</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="<?= $baseurl ?>sales_return.php" class="menu-link">
+            <div data-i18n="CRM">Add New</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="<?= $baseurl ?>sales_list.php" class="menu-link">
+            <div data-i18n="CRM">Return List</div>
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+
+    <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-user"></i>
+        <div data-i18n="Dashboards">Report</div>
+      </a>
+      <ul class="menu-sub">
+        
+        <li class="menu-item">
+          <a href="<?= $baseurl ?>stock_list.php" class="menu-link">
+            <div data-i18n="CRM">Stock Report</div>
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+
     <li class="menu-header small text-uppercase">
       <span class="menu-header-text">Settings</span>
     </li>
