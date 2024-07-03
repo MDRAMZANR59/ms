@@ -53,6 +53,8 @@
                                 <a class="dropdown-item" href="<?= $baseurl ?>medicine_delete.php?id=<?= $data->id ?>"
                                 ><i class="bx bx-trash me-2"></i> Delete</a
                                 >
+                                <a class="dropdown-item" href="<?= $baseurl ?>sales_invoice.php?id=<?= $data->id ?>"
+                                ><i class="bx bx-edit-alt me-2"></i> Sales Invoice</a>
                             </div>
                             </div>
                         </td>

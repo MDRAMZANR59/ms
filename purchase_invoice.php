@@ -17,7 +17,7 @@
     <div class="container ">
         <div class="card">
             <div class="card-header text-center">
-                <h4> MS INVOICE</h4>
+                <h4> PURCHASE INVOICE</h4>
             </div>
             <div class="card-body">
 
