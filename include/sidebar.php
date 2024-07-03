@@ -200,7 +200,7 @@
           </a>
         </li>
         <li class="menu-item">
-          <a href="<?= $baseurl ?>sales_list.php" class="menu-link">
+          <a href="<?= $baseurl ?>sales_return_list.php" class="menu-link">
             <div data-i18n="CRM">Return List</div>
           </a>
         </li>

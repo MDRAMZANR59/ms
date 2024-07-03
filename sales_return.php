@@ -17,13 +17,12 @@
                         <label for="customrName" class="float-end"><h6>Customer</h6></label>
                     </div>
                     <div class="col-md-4">
-                        <select class="form-control form-select" name="supplier_id" id="supplier_id">
+                        <select class="form-control form-select" name="customer_id" id="customer_id">
                             <option value="">Select Customer</option>
                             <?php 
                                 $result=$mysqli->common_select('customer');
                                 if($result){
                                     if($result['data']){
-                                        $i=1;
                                         foreach($result['data'] as $d){
                             ?>
                                 <option value="<?= $d->id ?>" > <?= $d->contact ?> <?= $d->name ?></option>
@@ -35,7 +34,13 @@
                         <label for="date" class="float-end"><h6>Date</h6></label>
                     </div>
                     <div class="col-md-4">
-                        <input type="date" id="purchase_date" class="form-control" value="<?= date("Y-m-d") ?>" name="purchase_date">
+                        <input type="date" id="sales_return_date" class="form-control" value="<?= date("Y-m-d") ?>" name="sales_return_date">
+                    </div>
+                    <div class="col-md-2 mt-3">
+                        <label for="ref" class="float-end"><h6>Sales Ref</h6></label>
+                    </div>
+                    <div class="col-md-4 mt-2">
+                        <input type="text" id="ref" class="form-control" name="ref">
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -50,7 +55,6 @@
                                 $medicine=array();
                                 if($result){
                                     if($result['data']){
-                                        $i=1;
                                         foreach($result['data'] as $d){
                                             $medicine[$d->id]=$d;
                             ?>
@@ -156,8 +160,8 @@
             </form>
             <?php 
                 if($_POST){
-                    $pur['supplier_id']=$_POST['supplier_id'];
-                    $pur['purchase_date']=$_POST['purchase_date'];
+                    $pur['customer_id']=$_POST['customer_id'];
+                    $pur['sales_return_date']=$_POST['sales_return_date'];
                     $pur['qty']=$_POST['total_qty'];
                     $pur['sub_amount']=$_POST['tsubtotal'];
                     $pur['discount']=$_POST['tdiscount'];
@@ -165,25 +169,25 @@
                     $pur['total_amount']=$_POST['tgrandtotal'];
                     $pur['created_at']=date("Y-m-d H:i:s");
                     $pur['created_by']=$_SESSION['id'];
-                    $rs=$mysqli->common_create('purchase',$pur);
+                    $rs=$mysqli->common_create('sales_return',$pur);
                     if($rs){
                         if($rs['data']){
                             if($_POST['medicine_id']){
                                 foreach($_POST['medicine_id'] as $k => $v){
-                                    $purd['purchase_id']=$rs['data'];
-                                    $purd['purchase_date']=$_POST['purchase_date'];
+                                    $purd['sales_return_id']=$rs['data'];
+                                    $purd['sales_return_date']=$_POST['sales_return_date'];
                                     $purd['medicine_id']=$v;
                                     $purd['qty']=$_POST['qty'][$k];
                                     $purd['price']=$_POST['price'][$k];
                                     $purd['created_at']=date("Y-m-d H:i:s");
                                     $purd['created_by']=$_SESSION['id'];
-                                    $prs=$mysqli->common_create('purchase_details',$purd);
+                                    $prs=$mysqli->common_create('sales_return_details',$purd);
                                     if($prs['data']){
-                                        $purs['purchase_id']=$rs['data'];
+                                        $purs['sales_return_id']=$rs['data'];
                                         $purs['medicine_id']=$v;
                                         $purs['qty']=$_POST['qty'][$k];
                                         $purs['price']=$_POST['price'][$k];
-                                        $purs['stock_date']=$_POST['purchase_date'];
+                                        $purs['stock_date']=$_POST['sales_return_date'];
                                         $purs['created_at']=date("Y-m-d H:i:s");
                                         $purs['created_by']=$_SESSION['id'];
                                         $srs=$mysqli->common_create('stock',$purs);
@@ -191,7 +195,7 @@
                                 }
                             }
 
-                            echo "<script>window.location='{$baseurl}purchase_list.php'</script>";
+                            echo "<script>window.location='{$baseurl}sales_return_list.php'</script>";
                         }else{
                             echo $rs['error'];
                         }

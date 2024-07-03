@@ -3,17 +3,17 @@
  
 <script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/datatables.min.js"></script>
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="py-3 mb-4"><span class="text-muted fw-light">Purchase Return </span> List</h4>
+        <h4 class="py-3 mb-4"><span class="text-muted fw-light">Sales </span> List</h4>
 
         <!-- Basic Bootstrap Table -->
         <div class="card">
-            <h5 class="card-header">Purchase</h5>
+            <h5 class="card-header">Sales</h5>
             <div class="table-responsive text-nowrap">
                 <table class="table">
                 <thead>
                     <tr>
                         <th>#SL</th>
-                        <th>Supplier</th>
+                        <th>Customer</th>
                         <th>Date</th>
                         <th>Qty</th>
                         <th>Sub Total</th>
@@ -25,7 +25,7 @@
                 </thead>
                 <tbody class="table-border-bottom-0">
                     <?php 
-                        $result=$mysqli->common_select_query("select supplier.name as sup_name,purchase_return.* from purchase_return join supplier on supplier.id=purchase_return.supplier_id");
+                        $result=$mysqli->common_select_query("select customer.name as cus_name,sales_return.* from sales_return join customer on customer.id=sales_return.customer_id");
                         if($result){
                             if($result['data']){
                                 $i=1;
@@ -34,8 +34,8 @@
                     <tr>
                     
                         <td><?= $i++ ?></td>
-                        <td><?= $data->sup_name ?></td>
-                        <td><?= date('d-m-Y',strtotime($data->purchase_return_date)) ?></td>
+                        <td><?= $data->cus_name ?></td>
+                        <td><?= date('d-m-Y',strtotime($data->sales_return_date)) ?></td>
                         <td><?= $data->qty ?></td>
                         <td><?= $data->sub_amount ?></td>
                         <td><?= $data->discount ?></td>
