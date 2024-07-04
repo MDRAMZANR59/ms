@@ -142,10 +142,9 @@
 
                 <?php
                   if($_POST){
-                    $crud=new crud();
                     $_POST['password']=sha1($_POST['password']);
                     $_POST['created_at']=date('Y-m-d H:i:s');
-                    $rs=$crud->common_create('auth',$_POST);
+                    $rs=$mysqli->common_create('auth',$_POST);
                     if($rs['data']){
                       echo "<script>window.location='{$baseurl}login.php'</script>";
                     }else{
