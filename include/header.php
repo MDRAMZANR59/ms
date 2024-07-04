@@ -20,7 +20,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="$baseurl=/assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="<?=$baseurl ?>/assets/img/favicon/icons8-medicine-48.png" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
