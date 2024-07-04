@@ -1,9 +1,5 @@
-<?php 
-    session_start();
-    $baseurl="http://localhost/ms/";
-    include_once('class/crud.php');
-
-?>
+<?php session_start(); ?>
+<?php require_once('include/connection.php'); ?>
 <!DOCTYPE html>
 
 <html

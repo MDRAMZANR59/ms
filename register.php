@@ -1,7 +1,4 @@
-<?php
-    $baseurl="http://localhost/ms/";
-    include_once('class/crud.php');
-?>
+<?php require_once('include/connection.php'); ?>
 <!DOCTYPE html>
 <html
   lang="en"
