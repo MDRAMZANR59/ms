@@ -9,7 +9,7 @@
 <?php 
 include_once('class/crud.php');
 $mysqli=new crud();
-$baseurl="http://localhost/ms2/";
+$baseurl="http://localhost/ms/";
 
 ?>
 <!DOCTYPE html>
