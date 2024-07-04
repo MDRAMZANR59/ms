@@ -47,12 +47,15 @@
                                 <i class="bx bx-dots-vertical-rounded"></i>
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="<?= $baseurl ?>medicine_edit.php?id=<?= $data->id ?>"
-                                ><i class="bx bx-edit-alt me-2"></i> Edit</a
-                                >
-                                <a class="dropdown-item" href="<?= $baseurl ?>medicine_delete.php?id=<?= $data->id ?>"
-                                ><i class="bx bx-trash me-2"></i> Delete</a
-                                >
+                                <a class="dropdown-item" href="<?= $baseurl ?>sales_invoice.php?id=<?= $data->id ?>">
+                                    <i class="bx bx-edit-alt me-2"></i> Invoice
+                                </a>
+                                <!-- <a class="dropdown-item" href="<?= $baseurl ?>medicine_edit.php?id=<?= $data->id ?>">
+                                    <i class="bx bx-edit-alt me-2"></i> Edit
+                                </a> -->
+                                <!-- <a class="dropdown-item" href="<?= $baseurl ?>medicine_delete.php?id=<?= $data->id ?>">
+                                    <i class="bx bx-trash me-2"></i> Delete
+                                </a> -->
                             </div>
                             </div>
                         </td>

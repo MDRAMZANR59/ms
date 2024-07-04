@@ -1,224 +1,343 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Sales Invoice </title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    
-    <script src="https://code.jquery.com/jquery-3.6.2.slim.js" integrity="sha256-OflJKW8Z8amEUuCaflBZJ4GOg4+JnNh9JdVfoV+6biw=" crossorigin="anonymous"></script>
- 
-    <style> 
-        @media print {
-        
-            .btn{
-                    display:none;
-            }
-
-        .input-group-text {
-                    width: 85px;
-            }    
-
-        .btn , .NoPrint {
-                    display: none;
-            }
-
-        .form-control {
-                    border: 0px;
-            }
-
-        .input-group-text {
-                    border: 0px;
-                    background-color: white;
-            }
-
-        table {
-                    border : 1px solid black;
+<?php require_once('include/connection.php'); ?>
+<?php 
+    $id=$_GET['id'];
+    $invoice_data=$medicines=[];
+    $result=$mysqli->common_select_query("select customer.name as cus_name,customer.contact,sales.* from sales join customer on customer.id=sales.customer_id where sales.id=$id");
+    if($result){
+        if($result['data']){
+            foreach($result['data'] as $data){
+                $invoice_data=$data;
             }
         }
-    </style>
+    }
+    $result=$mysqli->common_select_query("SELECT sales_details.*, medicine.brand_name,medicine.generic_name FROM `sales_details` JOIN medicine on medicine.id=sales_details.medicine_id where sales_details.sales_id=$id");
+    if($result){
+        if($result['data']){
+            foreach($result['data'] as $data){
+                $medicines[]=$data;
+            }
+        }
+    }
+?>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>Invoice</title>
+  <style>
+  </style>
 </head>
-  <body>  
+<body>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic);
+        /** GLOBAL **/
 
-    <div class="container ">
-       
-        <div class="card">
-            <div class="card-header text-center">
-              <h4> SALES INVOICE</h4>
-            </div>
-            <div class="card-body">
+        html, body {
+        height: 100%;
+        background: #002336;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        left: 0;
+        top: 0;
+        font-size: 100%;
+        }
+        * {
+        font-family: "Lato", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+        color: #333447;
+        line-height: 1.5;
+        }
+        /* TYPOGRAPHY */
 
-                <div class="row">
-                    <div class="col-8">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" >Customer</span>
-                            <input type="text" class="form-control" placeholder="Customer"  >
-                        </div>
-            
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" >Address</span>
-                            <input type="text" class="form-control" placeholder="Address"  >
-                        </div>
-            
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" >City</span>
-                            <input type="text" class="form-control" placeholder="City"  >
-                        </div>
-                    </div>
-                    <div class="col-4">
-                      
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" >Inv. No</span>
-                            <input type="text" class="form-control" placeholder="Inv. No"  >
-                        </div>
+        h1 {
+        font-size: 2.5rem;
+        }
+        h2 {
+        font-size: 2rem;
+        }
+        h3 {
+        font-size: 1.375rem;
+        }
+        h4 {
+        font-size: 1.125rem;
+        }
+        h5 {
+        font-size: 1rem;
+        }
+        h6 {
+        font-size: 0.875rem;
+        }
+        p {
+        font-size: 1.125rem;
+        font-weight: 200;
+        line-height: 1.8;
+        }
+        .font-light {
+        font-weight: 300;
+        }
+        .font-regular {
+        font-weight: 400;
+        }
+        .font-heavy {
+        font-weight: 700;
+        }
+        /* POSITIONING */
 
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" >Inv. Date</span>
-                            <input type="date" class="form-control" placeholder="Inv. Date"  >
-                        </div>
+        .left {
+        text-align: left;
+        }
+        .right {
+        float: right;
+        text-align: right;
+        }
+        .center {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        }
+        .justify {
+        text-align: justify;
+        }
+        /** standard padding**/
 
+        .no-padding {
+        padding: 0px;
+        }
+        .standard-padding {
+        padding: 20px;
+        }
+        .standard-padding-right {
+        padding-right: 20px;
+        }
+        .standard-padding-left {
+        padding-left: 20px;
+        }
+        .standard-padding-right {
+        padding-left: 20px;
+        }
+        .standard-padding-top {
+        padding-top: 20px;
+        }
+        .standard-padding-bottom {
+        padding-bottom: 20px;
+        }
+        .container {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        }
+        .row {
+        position: relative;
+        width: 100%;
+        }
+        .row [class^="col"] {
+        float: left;
+        margin: 0.5rem 2%;
+        min-height: 0.125rem;
+        }
+        .row::after {
+        content: "";
+        display: table;
+        clear: both;
+        }
+        .hidden-sm {
+        display: none;
+        }
+        .invoice-box {
+        background: #ffffff;
+        max-width: 900px;
+        margin: 60px auto;
+        padding: 30px;
+        border: 1px solid #002336;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+        font-size: 16px;
+        line-height: 24px;
+        color: #002336;
+        }
+        .title {
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+        margin-left: 10px;
+        margin-right: 10px;
+        font-weight: bold;
+        border-bottom: 1px solid #8B8B8B;
+        margin-bottom: 4px;
+        }
+        .infoblock {
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 0px;
+        padding-top: 0px;
+        }
+        .titles {
+        padding-top: 4px;
+        margin-top: 20px;
+        background: #DCDCDC;
+        font-weight: bold;
+        }
+        @media only screen and (max-width: 600px) {
+        .invoice-box table tr.top table td {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+        .invoice-box table tr.information table td {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+        }
+        /** RTL **/
 
-
-                    </div>
-                </div>
-
-
-                <table class="table table-bordered">
-                    <thead class="table-success">
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Particular</th>
-                        <th scope="col" class="text-end">Qty</th>
-                        <th scope="col" class="text-end">Rate</th>
-                        <th scope="col" class="text-end">Gross</th>
-                        <th scope="col" class="text-end">Discount</th>
-                        <th scope="col" class="text-end">Amount</th>
-                        <th scope="col" class="text-end">Vat</th>
-                        <th scope="col" class="text-end">Total</th>
-                        <th scope="col" class="NoPrint">                         
-                            <button type="button" class="btn btn-sm btn-success" onclick="BtnAdd()">+</button>
-                          
-                        </th>
-
-                      </tr>
-                    </thead>
-                    <tbody id="TBody">
-                      <tr id="TRow" class="d-none">
-                        <th scope="row">1</th>
-                        <td><input type="text" class="form-control" ></td>
-                        <td><input type="number" class="form-control text-end" name="qty" onchange="Calc(this);"></td>
-                        <td><input type="number" class="form-control text-end" name="rate"  onchange="Calc(this);"></td>
-                        <td><input type="number" class="form-control text-end" name="gross"  onchange="Calc(this);"></td>
-                        <td><input type="number" class="form-control text-end" name="discount"  onchange="Calc(this);"></td>
-                        <td><input type="number" class="form-control text-end" name="amt"  onchange="Calc(this);"></td>
-                        <td><input type="number" class="form-control text-end" name="vat"  onchange="Calc(this);"></td>
-                        <td><input type="number" class="form-control text-end" name="total" value="0" onchange="Calc(this);" disabled=""></td>
-                        <td class="NoPrint"><button type="button" class="btn btn-sm btn-danger" onclick="BtnDel(this)">X</button></td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-
-                  <div class="row">
-                    <div class="col-8">
-                      
-                        <button type="button" class="btn btn-primary" onclick="GetPrint()">Print</button>
-
-                    </div>
-                    <div class="col-4">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" > Grand Total</span>
-                            <input type="number" class="form-control text-end" id="FTotal" name="FTotal" disabled="">
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" >Gst</span>
-                            <input type="number" class="form-control text-end" id="FGST" name="FGST" onchange="GetTotal()">
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" >Net Amt</span>
-                            <input type="number" class="form-control text-end" id="FNet" name="FNet" disabled="">
-                        </div>
-
-
-                    </div>
-                </div>
-             </div>
+        .rtl {
+        direction: rtl;
+        font-family: "Lato", Tahoma, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+        }
+        .rtl table {
+        text-align: right;
+        }
+        .rtl table tr td:nth-child(2) {
+        text-align: left;
+        }
+        .eqWrap {
+        display: flex;
+        }
+        .eq {
+        padding: 10px;
+        }
+        .item:nth-of-type(odd) {
+        background: #F9F9F9;
+        }
+        .item:nth-of-type(even) {
+        background: #fff;
+        }
+        .equalHW {
+        flex: 1;
+        }
+        .equalHM {
+        width: 32%;
+        }
+        .equalHMR {
+        width: 32%;
+        margin-bottom: 2%;
+        }
+        table.table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+        }
+        .table th, .table td {
+        text-align: left;
+        padding: 0.25em;
+        }
+        .table tr {
+        border-bottom: 1px solid #DDD;
+        }
+        button:hover {
+        box-shadow: 0 0 4px rgba(3, 3, 3, 0.8);
+        opacity: 0.9;
+        }
+  </style>
+  <div class="watermark">
+    <span id="watermark" style="display:none;">WATERMARK</span>
+  </div>
+  <div class="invoice-box">
+    <div class="container">
+      <div class="row">
+        <div class="equalHWrap eqWrap top">
+          <div class="equalHW eq center logo-block">
+            <a href=""><img src="http://sequra.no/wp-content/uploads/2017/10/Sequra-Pure-logo.png" style="width:100%; max-width:55px;"></a>
           </div>
-
+          <div class="equalHW eq contact-info-block">
+            <span id="AccountEmail">pharmacy@weeblecode.com</span><br>
+            <span id="AccountPhone">016</span>
+          </div>
+          <div class="equalHW eq title-block">
+            <h2 class="right no-padding" id="InvoiceSumExVat" style="margin:0px;">My Pharma</h2>
+          </div>
+        </div>
+        <div class="row" style="margin-top:20px;">
+          <div class="equalHWrap eqWrap nomargin-nopadding to-block">
+            <div class="equalHW eq nomargin-nopadding title">
+              Customer
+            </div>
+            <div class="equalHW eq nomargin-nopadding title from-block">
+              
+            </div>
+            <div class="equalHW eq nomargin-nopadding title info-block">
+              Invoice<span class="right">#<span id="InvoiceNumber">INV<?= str_pad($invoice_data->id,5,"0",STR_PAD_LEFT) ?></span></span><br>
+            </div>
+          </div>
+          <div class="row">
+            <div class="equalHWrap eqWrap">
+              <div class="equalHW eq infoblock to-block">
+                <span id="CustomerName"><?= $invoice_data->cus_name ?></span><br>
+                <span id="AccountProject"><?= $invoice_data->contact ?></span><br>
+              </div>
+              <div class="equalHW eq infoblock from-block">
+               
+              </div>
+              <div class="equalHW eq infoblock info-block">
+                <span id="">Date:</span> <span class="right" id="CreatedDate"><?= date('d-m-Y',strtotime($invoice_data->sales_date)); ?></span><br>
+                <span id="">Medicine </span>: <span class="right" id="DueDate"><?= $invoice_data->qty ?></span><br>
+                <span id="">Total</span>: <span class="right" id="KidNumber"><?= $invoice_data->total_amount ?></span><br>
+              </div>
+            </div>
+          </div>
+          
+          <table class="table">
+            <tr class="titles">
+              <th>#SL</th>
+              <th>Medicine</th>
+              <th>Qty</th>
+              <th>Unit Price</th>
+              <th>Price</th>
+            </tr>
+            <?php if($medicines){foreach($medicines as $i=>$medi){ ?>
+                <tr class="item" id="ProductList">
+                    <td><?= ++$i ?></td>
+                    <td id="Product">
+                        <span id="ProuductName"><?= $medi->brand_name ?><span>
+                        <small><?= $medi->generic_name ?></small>
+                    </td>
+                    <td><span id="ProductUnit"><?= $medi->qty ?><span></span></span></td>
+                    <td><span id="ProductUnitPrice"><?= $medi->price ?></span></td>
+                    <td><span id="ProductDiscount"><?= $medi->price * $medi->qty ?></span></td>
+                </tr>
+            
+            <?php }} ?>
+           
+          </table>
+        </div>
+        <div class="row">
+          <div class="equalHWrap eqWrap">
+            <div class="equalHW eq">
+              <table class="right">
+                <tr>
+                  <td><span style="display:inline-block;margin-right:10px;"><strong>Total Sub:</strong></span></td>
+                  <td><span id="InvoceTotalVat"><?= $invoice_data->sub_amount ?></span> <span id="InvoiceCurrency1">BDT</span><br></td>
+                </tr>
+                <tr>
+                  <td><span style="display:inline-block;margin-right:10px;"><strong>Discount:</strong></span></td>
+                  <td><span id="InvoiceSumExVat"><?= $invoice_data->discount ?></span> <span id="InvoiceCurrency2">BDT</span></td>
+                </tr>
+                <tr>
+                  <td><span style="display:inline-block;margin-right:10px;"><strong>VAT:</strong></span></td>
+                  <td><span id="ProductCost"><?= $invoice_data->vat ?></span> <span id="InvoiceCurrency3">BDT</span></td>
+                </tr>
+                <tr>
+                  <td><span style="display:inline-block;margin-right:10px;"><strong>Total:</strong></span></td>
+                  <td><span id="ProductCost"><?= $invoice_data->total_amount ?></span> <span id="InvoiceCurrency3">BDT</span></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="center">
+            <a href="https://sequra.no" style="text-decoration:none;"> WDPF R59 <span style="border-bottom:1px solid #000;">Sequra</span></a>
+          </div>
+        </div>
+      </div>
     </div>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-  </body>
-  
+  </div>
+</body>
 </html>
-
-<script>
-    function GetPrint(){
-
-        window.print();
-    }
-
-    function BtnAdd(){
-
-        var v = $("#TRow").clone().appendTo("#TBody") ;
-        $(v).find("input").val('');
-        $(v).removeClass("d-none");
-        $(v).find("th").first().html($('#TBody tr').length - 1);
-    }
-
-    function BtnDel(v){
-
-       $(v).parent().parent().remove(); 
-       GetTotal();
-
-        $("#TBody").find("tr").each(
-        function(index)
-        {
-           $(this).find("th").first().html(index);
-        }
-
-       );
-    }
-
-    function Calc(v){
-        var index = $(v).parent().parent().index();
-    
-        var qty = document.getElementsByName("qty")[index].value;
-        var rate = document.getElementsByName("rate")[index].value;
-        var discount = document.getElementsByName("discount")[index].value;
-        var vat = document.getElementsByName("vat")[index].value;
-        
-
-        var gross = qty * rate;
-        document.getElementsByName("gross")[index].value = gross;
-
-        var amt = gross - discount;
-        document.getElementsByName("amt")[index].value = amt;
-
-        vat= amt * (vat/100)
-        var total = amt + vat; 
-        document.getElementsByName("total")[index].value = total;
-
-        GetTotal();
-    }
-
-    function GetTotal() {
-
-        var sum=0;
-        var totals = document.getElementsByName("total");
-
-        for (let index = 0; index < totals.length; index++){
-        var total = totals[index].value;
-        sum = +(sum) +  +(total) ; 
-        }
-
-        document.getElementById("FTotal").value = sum;
-
-        var gst =  document.getElementById("FGST").value;
-        var net = +(sum) + +(gst);
-        document.getElementById("FNet").value = net;
-
-        }
-</script>
