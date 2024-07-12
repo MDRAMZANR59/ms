@@ -3,17 +3,17 @@
  
 <script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/datatables.min.js"></script>
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="py-3 mb-4"><span class="text-muted fw-light">Purchase </span> List</h4>
+        <h4 class="py-3 mb-4"><span class="text-muted fw-light">purchase </span> List</h4>
 
         <!-- Basic Bootstrap Table -->
         <div class="card">
-            <h5 class="card-header">Purchase</h5>
+            <h5 class="card-header">purchase</h5>
             <div class="table-responsive text-nowrap">
                 <table class="table">
                 <thead>
                     <tr>
                         <th>#SL</th>
-                        <th>Supplier</th>
+                        <th>supplier</th>
                         <th>Date</th>
                         <th>Qty</th>
                         <th>Sub Total</th>
@@ -47,12 +47,15 @@
                                 <i class="bx bx-dots-vertical-rounded"></i>
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="<?= $baseurl ?>medicine_edit.php?id=<?= $data->id ?>"
-                                ><i class="bx bx-edit-alt me-2"></i> Edit</a
-                                >
-                                <a class="dropdown-item" href="<?= $baseurl ?>medicine_delete.php?id=<?= $data->id ?>"
-                                ><i class="bx bx-trash me-2"></i> Delete</a
-                                >
+                                <a class="dropdown-item" href="<?= $baseurl ?>purchase_invoice.php?id=<?= $data->id ?>">
+                                    <i class="bx bx-edit-alt me-2"></i> Invoice
+                                </a>
+                                <!-- <a class="dropdown-item" href="<?= $baseurl ?>medicine_edit.php?id=<?= $data->id ?>">
+                                    <i class="bx bx-edit-alt me-2"></i> Edit
+                                </a> -->
+                                <!-- <a class="dropdown-item" href="<?= $baseurl ?>medicine_delete.php?id=<?= $data->id ?>">
+                                    <i class="bx bx-trash me-2"></i> Delete
+                                </a> -->
                             </div>
                             </div>
                         </td>

@@ -253,7 +253,7 @@
             <span id="AccountPhone">016</span>
           </div>
           <div class="equalHW eq title-block">
-            <h2 class="right no-padding" id="InvoiceSumExVat" style="margin:0px;">My Pharma</h2>
+            <h2 class="right no-padding" id="InvoiceSumExVat" style="margin:0px;">MS Invoice</h2>
           </div>
         </div>
         <div class="row" style="margin-top:20px;">
