@@ -69,7 +69,7 @@
                         <tr class="">
                             <th class="p-2">Product Name</th>
                             <th class="p-2">Qty</th>
-                            <th class="p-2">Sell Price</th>
+                            <th class="p-2">Price</th>
                             <th class="p-2">Amount</th>
                             <th class="p-2">Action</th>
                         </tr>

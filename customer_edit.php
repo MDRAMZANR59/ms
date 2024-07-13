@@ -27,7 +27,7 @@
                     <label class="form-label" for="fullname">Full Name</label>
                     <input type="text" name="name" class="form-control" id="fullname" value="<?= $olddata->name ?>" />
                 </div>
-                <div class="mb-3">
+                <div class="mb-3"> 
                     <label class="form-label" for="phone">Phone No</label>
                     <input type="text" name="contact" id="phone" class="form-control phone-mask" value="<?= $olddata->contact ?>" />
                 </div>
