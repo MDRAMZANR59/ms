@@ -3,7 +3,7 @@
  
 <script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/datatables.min.js"></script>
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="py-3 mb-4"><span class="text-muted fw-light">Sales </span> List</h4>
+        <h4 class="py-3 mb-4"><span class="text-muted fw-light"></span>Sales Return List</h4>
 
         <!-- Basic Bootstrap Table -->
         <div class="card">
@@ -20,7 +20,6 @@
                         <th>Discount</th>
                         <th>VAT</th>
                         <th>Total</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
@@ -41,21 +40,6 @@
                         <td><?= $data->discount ?></td>
                         <td><?= $data->vat ?></td>
                         <td><?= $data->total_amount ?></td>
-                        <td>
-                            <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="<?= $baseurl ?>medicine_edit.php?id=<?= $data->id ?>"
-                                ><i class="bx bx-edit-alt me-2"></i> Edit</a
-                                >
-                                <a class="dropdown-item" href="<?= $baseurl ?>medicine_delete.php?id=<?= $data->id ?>"
-                                ><i class="bx bx-trash me-2"></i> Delete</a
-                                >
-                            </div>
-                            </div>
-                        </td>
                     </tr>
 
                     <?php } } } ?>

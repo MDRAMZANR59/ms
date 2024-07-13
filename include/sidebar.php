@@ -1,7 +1,8 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
   <div class="app-brand demo">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
     <a href="index.php" class="app-brand-link">
-      <span class="app-brand-logo demo">
+      <!-- <span class="app-brand-logo demo">
         <svg
           width="25"
           viewBox="0 0 25 42"
@@ -49,8 +50,9 @@
             </g>
           </g>
         </svg>
-      </span>
-      <span class="app-brand-text demo menu-text fw-bold ms-2">MS</span>
+      </span> -->
+      <span><a href="index.php"><img src="<?= $baseurl ?>/assets/img/illustrations/icons8-medicine-48.png" style="width:100%; max-width:55px;"></a></span>
+      <span class="demo menu-text fw-bold ms-2"><a href="index.php"><h2>MS</h2></span>
     </a>
 
     <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -64,14 +66,14 @@
     <!-- Dashboards -->
     <li class="menu-item">
       <a href="<?= $baseurl ?>" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-home-circle"></i>
+        <i class="menu-icon bi bi-house-add"></i>
         <div data-i18n="Dashboards">Dashboards</div>
       </a>
     </li>
     
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-user-circle"></i>
+        <i class="menu-icon bi bi-person-plus-fill"></i>
         <div data-i18n="Dashboards">Customer</div>
       </a>
       <ul class="menu-sub">
@@ -91,7 +93,7 @@
 
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-user"></i>
+        <i class="menu-icon bi bi-person-workspace"></i>
         <div data-i18n="Dashboards">Suppliers</div>
       </a>
       <ul class="menu-sub">
@@ -110,7 +112,7 @@
     </li>
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-user"></i>
+        <i class="menu-icon bi bi-bag-fill"></i>
         <div data-i18n="Dashboards">Purchase</div>
       </a>
       <ul class="menu-sub">
@@ -130,7 +132,7 @@
 
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-user"></i>
+        <i class="menu-icon bi bi-cart3"></i>
         <div data-i18n="Dashboards">Sales</div>
       </a>
       <ul class="menu-sub">
@@ -147,30 +149,10 @@
         
       </ul>
     </li>
-
+    
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-user"></i>
-        <div data-i18n="Dashboards">Medicine</div>
-      </a>
-      <ul class="menu-sub">
-        <li class="menu-item">
-          <a href="<?= $baseurl ?>medicine_add.php" class="menu-link">
-            <div data-i18n="CRM">Add New</div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="<?= $baseurl ?>medicine_list.php" class="menu-link">
-            <div data-i18n="CRM">List</div>
-          </a>
-        </li>
-        
-      </ul>
-    </li>
-
-    <li class="menu-item">
-      <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-user"></i>
+        <i class="menu-icon bi bi-bag-fill"></i>
         <div data-i18n="Dashboards">Purchase Return</div>
       </a>
       <ul class="menu-sub">
@@ -188,9 +170,10 @@
       </ul>
     </li>
 
+
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-user"></i>
+        <i class="menu-icon bi bi-cart3"></i>
         <div data-i18n="Dashboards">Sales Return</div>
       </a>
       <ul class="menu-sub">
@@ -210,7 +193,28 @@
 
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-user"></i>
+        <i class="menu-icon bi bi-capsule"></i>
+        <div data-i18n="Dashboards">Medicine</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="<?= $baseurl ?>medicine_add.php" class="menu-link">
+            <div data-i18n="CRM">Add New</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="<?= $baseurl ?>medicine_list.php" class="menu-link">
+            <div data-i18n="CRM">List</div>
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+
+
+    <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon bi bi-journal-medical"></i>
         <div data-i18n="Dashboards">Report</div>
       </a>
       <ul class="menu-sub">
@@ -231,7 +235,7 @@
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         
-        <i class="menu-icon tf-icons bx bx-user-detail"></i>
+        <i class="menu-icon bi bi-person-arms-up"></i>
         <div data-i18n="Dashboards">Users</div>
       </a>
       <ul class="menu-sub">
@@ -248,9 +252,10 @@
         
       </ul>
     </li>
+    
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-user"></i>
+        <i class="menu-icon bi bi-prescription2"></i>
         <div data-i18n="Dashboards">Medicine Type</div>
       </a>
       <ul class="menu-sub">
