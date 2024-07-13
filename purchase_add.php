@@ -65,7 +65,7 @@
                         <tr class="">
                             <th class="p-2">Product Name</th>
                             <th class="p-2">Qty</th>
-                            <th class="p-2">Sell Price</th>
+                            <th class="p-2">Price</th>
                             <th class="p-2">Amount</th>
                             <th class="p-2">Action</th>
                         </tr>
@@ -237,7 +237,9 @@
                         <td class="p-2">
                             <span id="price${data.id}" class="subprice"> </span>
                         </td>
-                        <td class="p-2">Action</td>
+                        <td class="p-2">
+                            <button class="btn btn-link text-danger" type="button" onclick="removerow(this)">&times;</button>
+                        </td>
                     </tr>`
             document.getElementById('details_data').insertRow().innerHTML=row;
             selected_medicine.push(data.id)
