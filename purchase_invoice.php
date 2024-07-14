@@ -246,7 +246,7 @@
       <div class="row">
         <div class="equalHWrap eqWrap top">
           <div class="equalHW eq center logo-block">
-            <a href=""><img src="http://sequra.no/wp-content/uploads/2017/10/Sequra-Pure-logo.png" style="width:100%; max-width:55px;"></a>
+            <a href=""><img src="<?= $baseurl ?>/assets/img/illustrations/icons8-medicine-48.png" style="width:100%; max-width:55px;"></a>
           </div>
           <div class="equalHW eq contact-info-block">
             <span id="AccountEmail">pharmacy@weeblecode.com</span><br>
@@ -333,7 +333,7 @@
             </div>
           </div>
           <div class="center">
-            <a href="https://sequra.no" style="text-decoration:none;"> WDPF R59 <span style="border-bottom:1px solid #000;">Sequra</span></a>
+            <a href="https://weeblecode.com/pharmacy" style="text-decoration:none;"> WDPF R59 <span style="border-bottom:1px solid #000;"></span></a>
           </div>
         </div>
       </div>
