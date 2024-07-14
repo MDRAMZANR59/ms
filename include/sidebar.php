@@ -71,25 +71,6 @@
       </a>
     </li>
     
-    <li class="menu-item">
-      <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon bi bi-person-plus-fill"></i>
-        <div data-i18n="Dashboards">Customer</div>
-      </a>
-      <ul class="menu-sub">
-        <li class="menu-item">
-          <a href="<?= $baseurl ?>customer_add.php" class="menu-link">
-            <div data-i18n="CRM">Add New</div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="<?= $baseurl ?>customer_list.php" class="menu-link">
-            <div data-i18n="CRM">List</div>
-          </a>
-        </li>
-        
-      </ul>
-    </li>
 
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -110,6 +91,48 @@
         
       </ul>
     </li>
+
+
+    <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon bi bi-person-plus-fill"></i>
+        <div data-i18n="Dashboards">Customer</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="<?= $baseurl ?>customer_add.php" class="menu-link">
+            <div data-i18n="CRM">Add New</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="<?= $baseurl ?>customer_list.php" class="menu-link">
+            <div data-i18n="CRM">List</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+
+    <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon bi bi-capsule"></i>
+        <div data-i18n="Dashboards">Medicine</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="<?= $baseurl ?>medicine_add.php" class="menu-link">
+            <div data-i18n="CRM">Add New</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="<?= $baseurl ?>medicine_list.php" class="menu-link">
+            <div data-i18n="CRM">List</div>
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+    
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon bi bi-bag-fill"></i>
@@ -185,26 +208,6 @@
         <li class="menu-item">
           <a href="<?= $baseurl ?>sales_return_list.php" class="menu-link">
             <div data-i18n="CRM">Return List</div>
-          </a>
-        </li>
-        
-      </ul>
-    </li>
-
-    <li class="menu-item">
-      <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon bi bi-capsule"></i>
-        <div data-i18n="Dashboards">Medicine</div>
-      </a>
-      <ul class="menu-sub">
-        <li class="menu-item">
-          <a href="<?= $baseurl ?>medicine_add.php" class="menu-link">
-            <div data-i18n="CRM">Add New</div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="<?= $baseurl ?>medicine_list.php" class="menu-link">
-            <div data-i18n="CRM">List</div>
           </a>
         </li>
         
