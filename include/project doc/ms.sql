@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 12, 2024 at 11:21 PM
+-- Generation Time: Jul 14, 2024 at 01:59 AM
 -- Server version: 10.6.18-MariaDB-cll-lve
 -- PHP Version: 8.1.28
 
@@ -208,7 +208,14 @@ INSERT INTO `purchase` (`id`, `supplier_id`, `purchase_date`, `qty`, `sub_amount
 (8, 3, '2024-07-12', 10, 450.00, 10.00, 22.50, 462.00, '2024-07-12 12:26:55', 3, NULL, NULL, NULL),
 (9, 11, '2024-07-12', 20, 2840.00, 0.00, 142.00, 2982.00, '2024-07-12 12:27:59', 3, NULL, NULL, NULL),
 (10, 2, '2024-07-12', 1000, 12000.00, 100.00, 600.00, 12500.00, '2024-07-12 12:29:27', 3, NULL, NULL, NULL),
-(11, 2, '2024-07-12', 1000, 2000.00, 100.00, 100.00, 2000.00, '2024-07-12 12:33:52', 3, NULL, NULL, NULL);
+(11, 2, '2024-07-12', 1000, 2000.00, 100.00, 100.00, 2000.00, '2024-07-12 12:33:52', 3, NULL, NULL, NULL),
+(12, 3, '2024-07-13', 110, 2870.00, 60.00, 114.80, 2924.00, '2024-07-13 07:22:52', 1, NULL, NULL, NULL),
+(13, 2, '2024-07-13', 120000, 9600000.00, 0.00, 0.00, 9600000.00, '2024-07-13 13:46:36', 1, NULL, NULL, NULL),
+(14, 2, '2024-07-13', 40, 1140.00, 100.00, 57.00, 1097.00, '2024-07-13 19:31:37', 3, NULL, NULL, NULL),
+(15, 2, '2024-07-13', 1000, 2000.00, 0.00, 0.00, 2000.00, '2024-07-13 19:37:42', 3, NULL, NULL, NULL),
+(16, 4, '2024-07-14', 2000, 70000.00, 500.00, 3500.00, 73000.00, '2024-07-14 03:28:20', 1, NULL, NULL, NULL),
+(17, 4, '2024-07-14', 1000, 30000.00, 100.00, 1500.00, 31400.00, '2024-07-14 04:08:58', 1, NULL, NULL, NULL),
+(18, 0, '2024-07-14', 0, 0.00, 0.00, 0.00, 0.00, '2024-07-14 05:14:47', 1, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -248,7 +255,15 @@ INSERT INTO `purchase_details` (`id`, `purchase_id`, `purchase_date`, `medicine_
 (11, 8, '2024-07-12', 15, 10.00, 45.00, '2024-07-12 12:26:55', 3, NULL, NULL, NULL),
 (12, 9, '2024-07-12', 28, 20.00, 142.00, '2024-07-12 12:27:59', 3, NULL, NULL, NULL),
 (13, 10, '2024-07-12', 5, 1000.00, 12.00, '2024-07-12 12:29:27', 3, NULL, NULL, NULL),
-(14, 11, '2024-07-12', 1, 1000.00, 2.00, '2024-07-12 12:33:52', 3, NULL, NULL, NULL);
+(14, 11, '2024-07-12', 1, 1000.00, 2.00, '2024-07-12 12:33:52', 3, NULL, NULL, NULL),
+(15, 12, '2024-07-13', 1, 60.00, 2.00, '2024-07-13 07:22:52', 1, NULL, NULL, NULL),
+(16, 12, '2024-07-13', 3, 50.00, 55.00, '2024-07-13 07:22:52', 1, NULL, NULL, NULL),
+(17, 13, '2024-07-13', 13, 120000.00, 80.00, '2024-07-13 13:46:36', 1, NULL, NULL, NULL),
+(18, 14, '2024-07-13', 1, 20.00, 2.00, '2024-07-13 19:31:37', 3, NULL, NULL, NULL),
+(19, 14, '2024-07-13', 3, 20.00, 55.00, '2024-07-13 19:31:37', 3, NULL, NULL, NULL),
+(20, 15, '2024-07-13', 1, 1000.00, 2.00, '2024-07-13 19:37:42', 3, NULL, NULL, NULL),
+(21, 16, '2024-07-14', 4, 2000.00, 35.00, '2024-07-14 03:28:20', 1, NULL, NULL, NULL),
+(22, 17, '2024-07-14', 10, 1000.00, 30.00, '2024-07-14 04:08:58', 1, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -280,7 +295,9 @@ CREATE TABLE `purchase_return` (
 INSERT INTO `purchase_return` (`id`, `ref`, `supplier_id`, `purchase_return_date`, `qty`, `sub_amount`, `discount`, `vat`, `total_amount`, `created_at`, `created_by`, `updated_at`, `updated_by`, `deleted_at`) VALUES
 (1, 0, 1, '2024-07-03', 5, 10.00, 0.00, 0.00, 10.00, '2024-07-03 07:48:53', 1, NULL, NULL, NULL),
 (2, 0, 1, '2024-07-03', 5, 10.00, 0.00, 0.00, 10.00, '2024-07-03 07:49:19', 1, NULL, NULL, NULL),
-(3, 0, 6, '2024-07-10', 90, 58500.00, 0.00, 5850.00, 64350.00, '2024-07-10 03:33:44', 2, NULL, NULL, NULL);
+(3, 0, 6, '2024-07-10', 90, 58500.00, 0.00, 5850.00, 64350.00, '2024-07-10 03:33:44', 2, NULL, NULL, NULL),
+(4, 0, 4, '2024-07-14', 1000, 35000.00, 500.00, 1750.00, 36250.00, '2024-07-14 03:29:51', 1, NULL, NULL, NULL),
+(5, 0, 2, '2024-07-14', 1000, 30000.00, 100.00, 2100.00, 32000.00, '2024-07-14 05:54:19', 1, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -308,7 +325,9 @@ CREATE TABLE `purchase_return_details` (
 
 INSERT INTO `purchase_return_details` (`id`, `purchase_return_id`, `purchase_return_date`, `medicine_id`, `qty`, `price`, `created_at`, `created_by`, `updated_at`, `updated_by`, `deleted_at`) VALUES
 (1, 2, '2024-07-03', 1, 5.00, 2.00, '2024-07-03 07:49:19', 1, NULL, NULL, NULL),
-(2, 3, '2024-07-10', 26, 90.00, 650.00, '2024-07-10 03:33:44', 2, NULL, NULL, NULL);
+(2, 3, '2024-07-10', 26, 90.00, 650.00, '2024-07-10 03:33:44', 2, NULL, NULL, NULL),
+(3, 4, '2024-07-14', 4, 1000.00, 35.00, '2024-07-14 03:29:51', 1, NULL, NULL, NULL),
+(4, 5, '2024-07-14', 10, 1000.00, 30.00, '2024-07-14 05:54:19', 1, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -342,7 +361,13 @@ INSERT INTO `sales` (`id`, `customer_id`, `sales_date`, `qty`, `sub_amount`, `di
 (3, 12, '2024-07-07', 20, 240.00, 10.00, 12.00, 242.00, '2024-07-07 07:52:44', 3, NULL, NULL, NULL),
 (4, 10, '2024-07-10', 500, 325000.00, 3.00, 32500.00, 357497.00, '2024-07-10 03:28:36', 2, NULL, NULL, NULL),
 (5, 4, '2024-07-12', 50, 100.00, 0.00, 5.00, 105.00, '2024-07-12 12:34:50', 3, NULL, NULL, NULL),
-(6, 7, '2024-07-12', 20, 40.00, 5.00, 2.00, 37.00, '2024-07-12 12:36:36', 3, NULL, NULL, NULL);
+(6, 7, '2024-07-12', 20, 40.00, 5.00, 2.00, 37.00, '2024-07-12 12:36:36', 3, NULL, NULL, NULL),
+(7, 4, '2024-07-13', 90, 180.00, 5.00, 7.20, 182.00, '2024-07-13 07:25:33', 1, NULL, NULL, NULL),
+(8, 3, '2024-07-13', 10, 20.00, 0.00, 0.00, 20.00, '2024-07-13 07:27:38', 1, NULL, NULL, NULL),
+(9, 0, '2024-07-13', 910, 1820.00, 10.00, 91.00, 1901.00, '2024-07-13 19:35:14', 3, NULL, NULL, NULL),
+(10, 3, '2024-07-13', 10, 20.00, 5.00, 1.00, 16.00, '2024-07-13 19:39:00', 3, NULL, NULL, NULL),
+(11, 7, '2024-07-14', 152, 5320.00, 50.00, 266.00, 5536.00, '2024-07-14 03:31:34', 1, NULL, NULL, NULL),
+(12, 4, '2024-07-14', 700, 1400.00, 100.00, 70.00, 1370.00, '2024-07-14 03:46:24', 4, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -375,7 +400,13 @@ INSERT INTO `sales_details` (`id`, `sales_id`, `sales_date`, `medicine_id`, `qty
 (4, 3, '2024-07-07', 5, 20.00, 12.00, '2024-07-07 07:52:44', 3, NULL, NULL, NULL),
 (5, 4, '2024-07-10', 26, 500.00, 650.00, '2024-07-10 03:28:36', 2, NULL, NULL, NULL),
 (6, 5, '2024-07-12', 1, 50.00, 2.00, '2024-07-12 12:34:50', 3, NULL, NULL, NULL),
-(7, 6, '2024-07-12', 1, 20.00, 2.00, '2024-07-12 12:36:36', 3, NULL, NULL, NULL);
+(7, 6, '2024-07-12', 1, 20.00, 2.00, '2024-07-12 12:36:36', 3, NULL, NULL, NULL),
+(8, 7, '2024-07-13', 1, 90.00, 2.00, '2024-07-13 07:25:33', 1, NULL, NULL, NULL),
+(9, 8, '2024-07-13', 1, 10.00, 2.00, '2024-07-13 07:27:38', 1, NULL, NULL, NULL),
+(10, 9, '2024-07-13', 1, 910.00, 2.00, '2024-07-13 19:35:14', 3, NULL, NULL, NULL),
+(11, 10, '2024-07-13', 1, 10.00, 2.00, '2024-07-13 19:39:00', 3, NULL, NULL, NULL),
+(12, 11, '2024-07-14', 4, 152.00, 35.00, '2024-07-14 03:31:34', 1, NULL, NULL, NULL),
+(13, 12, '2024-07-14', 1, 700.00, 2.00, '2024-07-14 03:46:24', 4, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -405,7 +436,9 @@ CREATE TABLE `sales_return` (
 --
 
 INSERT INTO `sales_return` (`id`, `ref`, `customer_id`, `sales_return_date`, `qty`, `sub_amount`, `discount`, `vat`, `total_amount`, `created_at`, `created_by`, `updated_at`, `updated_by`, `deleted_at`) VALUES
-(1, 0, 2, '2024-07-03', 55, 550.00, 5.00, 27.50, 572.00, '2024-07-03 07:51:25', 1, NULL, NULL, NULL);
+(1, 0, 2, '2024-07-03', 55, 550.00, 5.00, 27.50, 572.00, '2024-07-03 07:51:25', 1, NULL, NULL, NULL),
+(2, 0, 7, '2024-07-14', 50, 1750.00, 10.00, 87.50, 1827.00, '2024-07-14 03:32:59', 1, NULL, NULL, NULL),
+(3, 0, 4, '2024-07-14', 300, 600.00, 80.00, 24.00, 544.00, '2024-07-14 03:47:08', 4, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -432,7 +465,9 @@ CREATE TABLE `sales_return_details` (
 --
 
 INSERT INTO `sales_return_details` (`id`, `sales_return_id`, `sales_return_date`, `medicine_id`, `qty`, `price`, `created_at`, `created_by`, `updated_at`, `updated_by`, `deleted_at`) VALUES
-(1, 1, '2024-07-03', 2, 55.00, 10.00, '2024-07-03 07:51:25', 1, NULL, NULL, NULL);
+(1, 1, '2024-07-03', 2, 55.00, 10.00, '2024-07-03 07:51:25', 1, NULL, NULL, NULL),
+(2, 2, '2024-07-14', 4, 50.00, 35.00, '2024-07-14 03:32:59', 1, NULL, NULL, NULL),
+(3, 3, '2024-07-14', 1, 300.00, 2.00, '2024-07-14 03:47:08', 4, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -483,7 +518,25 @@ INSERT INTO `stock` (`id`, `purchase_id`, `sales_id`, `purchase_return_id`, `sal
 (19, 10, NULL, NULL, NULL, 5, 1000.00, 12.00, '2024-07-12', '2024-07-12 12:29:27', 3, NULL, NULL, NULL),
 (20, 11, NULL, NULL, NULL, 1, 1000.00, 2.00, '2024-07-12', '2024-07-12 12:33:52', 3, NULL, NULL, NULL),
 (21, NULL, 5, NULL, NULL, 1, -50.00, 2.00, '0000-00-00', '2024-07-12 12:34:50', 3, NULL, NULL, NULL),
-(22, NULL, 6, NULL, NULL, 1, -20.00, 2.00, '0000-00-00', '2024-07-12 12:36:36', 3, NULL, NULL, NULL);
+(22, NULL, 6, NULL, NULL, 1, -20.00, 2.00, '0000-00-00', '2024-07-12 12:36:36', 3, NULL, NULL, NULL),
+(23, 12, NULL, NULL, NULL, 1, 60.00, 2.00, '2024-07-13', '2024-07-13 07:22:52', 1, NULL, NULL, NULL),
+(24, 12, NULL, NULL, NULL, 3, 50.00, 55.00, '2024-07-13', '2024-07-13 07:22:52', 1, NULL, NULL, NULL),
+(25, NULL, 7, NULL, NULL, 1, -90.00, 2.00, '0000-00-00', '2024-07-13 07:25:33', 1, NULL, NULL, NULL),
+(26, NULL, 8, NULL, NULL, 1, -10.00, 2.00, '0000-00-00', '2024-07-13 07:27:38', 1, NULL, NULL, NULL),
+(27, 13, NULL, NULL, NULL, 13, 120000.00, 80.00, '2024-07-13', '2024-07-13 13:46:36', 1, NULL, NULL, NULL),
+(28, 14, NULL, NULL, NULL, 1, 20.00, 2.00, '2024-07-13', '2024-07-13 19:31:37', 3, NULL, NULL, NULL),
+(29, 14, NULL, NULL, NULL, 3, 20.00, 55.00, '2024-07-13', '2024-07-13 19:31:37', 3, NULL, NULL, NULL),
+(30, NULL, 9, NULL, NULL, 1, -910.00, 2.00, '0000-00-00', '2024-07-13 19:35:14', 3, NULL, NULL, NULL),
+(31, 15, NULL, NULL, NULL, 1, 1000.00, 2.00, '2024-07-13', '2024-07-13 19:37:42', 3, NULL, NULL, NULL),
+(32, NULL, 10, NULL, NULL, 1, -10.00, 2.00, '0000-00-00', '2024-07-13 19:39:00', 3, NULL, NULL, NULL),
+(33, 16, NULL, NULL, NULL, 4, 2000.00, 35.00, '2024-07-14', '2024-07-14 03:28:20', 1, NULL, NULL, NULL),
+(34, NULL, NULL, 4, NULL, 4, -1000.00, 35.00, '2024-07-14', '2024-07-14 03:29:51', 1, NULL, NULL, NULL),
+(35, NULL, 11, NULL, NULL, 4, -152.00, 35.00, '0000-00-00', '2024-07-14 03:31:34', 1, NULL, NULL, NULL),
+(36, NULL, NULL, NULL, 2, 4, 50.00, 35.00, '2024-07-14', '2024-07-14 03:32:59', 1, NULL, NULL, NULL),
+(37, NULL, 12, NULL, NULL, 1, -700.00, 2.00, '0000-00-00', '2024-07-14 03:46:24', 4, NULL, NULL, NULL),
+(38, NULL, NULL, NULL, 3, 1, 300.00, 2.00, '2024-07-14', '2024-07-14 03:47:08', 4, NULL, NULL, NULL),
+(39, 17, NULL, NULL, NULL, 10, 1000.00, 30.00, '2024-07-14', '2024-07-14 04:08:58', 1, NULL, NULL, NULL),
+(40, NULL, NULL, 5, NULL, 10, -1000.00, 30.00, '2024-07-14', '2024-07-14 05:54:19', 1, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -664,55 +717,55 @@ ALTER TABLE `medicine`
 -- AUTO_INCREMENT for table `purchase`
 --
 ALTER TABLE `purchase`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `purchase_details`
 --
 ALTER TABLE `purchase_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `purchase_return`
 --
 ALTER TABLE `purchase_return`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `purchase_return_details`
 --
 ALTER TABLE `purchase_return_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `sales_details`
 --
 ALTER TABLE `sales_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `sales_return`
 --
 ALTER TABLE `sales_return`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `sales_return_details`
 --
 ALTER TABLE `sales_return_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `supplier`
