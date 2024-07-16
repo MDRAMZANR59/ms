@@ -18,13 +18,14 @@
                         <th>Dose</th>
                         <th>Type</th>
                         <th>Price</th>
+                        <th>Photo</th>
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
                     <?php 
-                        $result=$mysqli->common_select_query("select medicine.id,medicine.brand_name, medicine.generic_name,medicine.price, medicine.dose,  medicine.status, type.type from medicine join type on type.id=medicine.type_id where medicine.deleted_at is null");
+                        $result=$mysqli->common_select_query("select medicine.id,medicine.brand_name, medicine.generic_name,medicine.price, medicine.photo, medicine.dose,  medicine.status, type.type from medicine join type on type.id=medicine.type_id where medicine.deleted_at is null");
                         if($result){
                             if($result['data']){
                                 $i=1;
@@ -38,6 +39,7 @@
                         <td><?= $data->dose ?></td>
                         <td><?= $data->type ?></td>
                         <td><?= $data->price ?></td>
+                        <td><img src="<?= $baseurl ?>assets/img2/<?= $data->photo ?>" width="80px" alt=""></td>
                         <td><?= $data->status ? "Active":"Inactive" ?></td>
                         <td>
                             <div class="dropdown">
