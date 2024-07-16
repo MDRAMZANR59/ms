@@ -40,6 +40,10 @@
                     <label class="form-label" for="price">Price</label>
                     <input type="text" name="price" id="price" class="form-control" value="<?= $olddata->price ?>" />
                 </div>
+                <div class="mb-3">
+                    <label class="form-label" for="photo">Photo</label>
+                    <input type="text" name="photo" id="photo" class="form-control" value="<?= $olddata->photo ?>" />
+                </div>
                  <div class="mb-3">
                     <label class="form-label" for="type_id">type_id</label>
                     <select class="form-control form-select" required name="type_id" id="type_id">
@@ -66,6 +70,26 @@
             </form>
             <?php 
                 if($_POST){
+
+                    if($_FILES){
+            
+                         $img=$_FILES["photo"];
+    
+                        if($img['size'] < (100*1024)){
+                         if($img['type'] =="image/jpeg"){
+                        $imagename=time().rand(1111,9999).".jpg";
+                        $rs=move_uploaded_file($img['tmp_name'],'assets/img2/'.$imagename);
+                        if($rs){
+                            $_POST['photo']=$imagename;
+                        }
+                    }else{
+                        echo "Only image can be uploaded.";
+                    }
+                }else{
+                    echo "File size cannot be more than 100KB";
+                }
+            }
+
                     $_POST['updated_at']=date('Y-m-d H:i:s');
                     $_POST['updated_by']=1;
                     $rs=$mysqli->common_update('medicine',$_POST,$con);
