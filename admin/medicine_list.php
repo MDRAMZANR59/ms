@@ -24,7 +24,7 @@
                 </thead>
                 <tbody class="table-border-bottom-0">
                     <?php 
-                        $result=$mysqli->common_select_query("select medicine.id,medicine.brand_name, medicine.generic_name,medicine.price, medicine.dose,  medicine.status, type.type from medicine join type on type.id=medicine.type_id");
+                        $result=$mysqli->common_select_query("select medicine.id,medicine.brand_name, medicine.generic_name,medicine.price, medicine.dose,  medicine.status, type.type from medicine join type on type.id=medicine.type_id where medicine.deleted_at is null");
                         if($result){
                             if($result['data']){
                                 $i=1;
