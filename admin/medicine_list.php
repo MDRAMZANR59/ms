@@ -9,7 +9,7 @@
         <div class="card">
             <h5 class="card-header">medicine</h5>
             <div class="table-responsive text-nowrap">
-                <table class="table">
+                <table class="table table-bordered table-striped verticle-middle table-responsive-sm">
                 <thead>
                     <tr>
                         <th>#SL</th>
