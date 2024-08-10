@@ -39,7 +39,7 @@
                         <td><?= $data->dose ?></td>
                         <td><?= $data->type ?></td>
                         <td><?= $data->price ?></td>
-                        <td><img src="<?= $baseurl ?>assets/img2/<?= $data->photo ?>" width="80px" alt=""></td>
+                        <td><img src="<?= $baseurl ?>../assets/img/medicine/<?= $data->photo ?>" width="80px" alt=""></td>
                         <td><?= $data->status ? "Active":"Inactive" ?></td>
                         <td>
                             <div class="dropdown">

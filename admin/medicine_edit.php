@@ -22,8 +22,7 @@
             <h5 class="mb-0">medicine Information</h5>
         </div>
         <div class="card-body">
-            <form method="post" action="">
-                
+            <form method="post" action="" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label class="form-label" for="brand_name">brand name</label>
                     <input type="text" name="brand_name" id="brand_name" class="form-control brand_name-mask" value="<?= $olddata->brand_name ?>" />
@@ -42,7 +41,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="photo">Photo</label>
-                    <input type="text" name="photo" id="photo" class="form-control" value="<?= $olddata->photo ?>" />
+                    <input type="file" name="photo" id="photo" class="form-control" />
                 </div>
                  <div class="mb-3">
                     <label class="form-label" for="type_id">type_id</label>
@@ -72,23 +71,13 @@
                 if($_POST){
 
                     if($_FILES){
-            
-                         $img=$_FILES["photo"];
-    
-                        if($img['size'] < (100*1024)){
-                         if($img['type'] =="image/jpeg"){
+                        $img=$_FILES["photo"];
                         $imagename=time().rand(1111,9999).".jpg";
-                        $rs=move_uploaded_file($img['tmp_name'],'assets/img2/'.$imagename);
+                        $rs=move_uploaded_file($img['tmp_name'],'../assets/img/medicine/'.$imagename);
                         if($rs){
                             $_POST['photo']=$imagename;
                         }
-                    }else{
-                        echo "Only image can be uploaded.";
                     }
-                }else{
-                    echo "File size cannot be more than 100KB";
-                }
-            }
 
                     $_POST['updated_at']=date('Y-m-d H:i:s');
                     $_POST['updated_by']=1;
