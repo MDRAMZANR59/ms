@@ -54,13 +54,7 @@
             
             <div class="row">
               <div class="col-md-12">
-                <!-- <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='checkout.php'">Proceed To Checkout</button> -->
-                
-                <?php if(isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']){ ?>
-									 <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='checkout.php'">Proceed To Checkout</button>
- 										<?php }else{ ?>
-                       <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='login.php'">Proceed To Checkout</button>
-										<?php } ?>
+                <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='checkout.php'">Proceed To Checkout</button>
               </div>
             </div>
           </div>
@@ -168,11 +162,11 @@
     if(data.item !=""){
       for (const [key, value] of Object.entries(data.item)) {
         tbodydata+=`<tr>
-                    <td class="product-thumbnail">
-                      <img src="<?= $baseurl ?>admin/assets/items/${value.photo}" alt="Image" class="img-fluid">
+                    <td class="product-thumbnail" width="10%">
+                      <img src="<?= $baseurl ?>assets/img/medicine/${value.photo}" alt="Image" class="img-fluid w-100">
                     </td>
                     <td class="product-name">
-                      <h2 class="h5 text-black">${value.product_name}</h2>
+                      <h2 class="h5 text-black">${value.brand_name}</h2>
                     </td>
                     <td>BDT ${value.price}</td>
                     <td>

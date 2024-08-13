@@ -1,3 +1,5 @@
+<?php require_once('connection.php'); ?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -99,7 +101,7 @@
               </form>
               <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
 						<li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
-						<li><a class="nav-link" href="cart.php"><img src="images/cart.svg"></a></li>
+						<li><a class="nav-link" href="cart.php"><img src="images/cart.svg"><span class="badge cart_total" > <?= isset($_SESSION['cart']['total_qty'])?$_SESSION['cart']['total_qty']:0 ?> </span></a></li>
 					</ul>
               <div class="login_btn-contanier ml-0 ml-lg-5">
                 <a href="login.php">

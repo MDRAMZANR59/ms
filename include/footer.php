@@ -114,18 +114,25 @@
       autoplay: true,
 
       responsive: {
-        0: {
-          items: 1
-        },
-        600: {
-          items: 2
-        },
-        1000: {
-          items: 4
-        }
+        0: {items: 1},
+        600: {items: 2},
+        1000: {items: 4}
       }
     });
   </script>
+		<script>
+			function addToCart(id){
+				$.get('cart_add.php',
+					{ id : id},
+					function(data){
+						if(data){
+							data=JSON.parse(data);
+							$('.cart_total').html(data.total_qty)
+						}
+					}
+				)
+			}
+		</script>
 </body>
 
 </html>
