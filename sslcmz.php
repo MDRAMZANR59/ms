@@ -63,7 +63,7 @@ if($rs){
         if($_SESSION['cart']['item']){
             foreach($_SESSION['cart']['item'] as $k => $v){
                 $purs['sales_id']=$rs['data'];
-                $purs['item_id']=$k;
+                $purs['medicine_id']=$k;
                 $purs['qty']="-".$v['qty'];
                 $purs['price']=$v['price'];
                 $purs['stock_date']=date("Y-m-d H:i:s");

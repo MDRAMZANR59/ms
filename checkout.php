@@ -191,7 +191,7 @@
 									<tbody>
 										<?php foreach($_SESSION['cart']['item'] as $item){ ?>
 												<tr>
-													<td><?= $item['product_name'] ?> <strong class="mx-2"><?= $item['qty'] ?></strong></td>
+													<td><?= $item['brand_name'] ?> <strong class="mx-2"><?= $item['qty'] ?></strong></td>
 													<td>BDT <?= $item['price'] ?></td>
 												</tr>
 										<?php } ?>
