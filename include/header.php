@@ -102,15 +102,43 @@
               <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
 						<li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
 						<li><a class="nav-link" href="cart.php"><img src="images/cart.svg"><span class="badge cart_total" > <?= isset($_SESSION['cart']['total_qty'])?$_SESSION['cart']['total_qty']:0 ?> </span></a></li>
-					</ul>
-              <div class="login_btn-contanier ml-0 ml-lg-5">
+					
+            <li>
+							<ul class=class="dropdown-menu dropdown-menu-end">
+								<li class="nav-item dropdown">
+									<a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+									<?php if(isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']){ ?>
+										<span class="nav-link" href="#"><span style="color:white" class="last_name"><?= $_SESSION['user_data']->last_name ?></span> <img src="<?= $baseurl ?>admin/assets/customer_photos/"></span>
+										
+ 										<?php }else{ ?>
+											<span class="nav-link" href="#"><img src="<?= $baseurl ?>admin/assets/customer_photos/"></span>
+										<?php } ?>
+									
+									</a>
+									<?php if(isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']){ ?>
+									<ul class="">
+										<li><a class="dropdown-item" href="#"><span class="edu-icon edu-home-admin author-log-ic"></span>My Account</a></li>
+											<li><a class="dropdown-item" href="#"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a></li>
+											<li><a class="dropdown-item" href="<?= $baseurl ?>logout.php"><span class="edu-icon edu-locked author-log-ic"></span>Logout</a></li>
+ 										<?php }else{ ?>
+										<ul class="dropdown-item" href="#">
+											<li><a class="dropdown-item" href="<?= $baseurl ?>login.php"><span class="align-middle"></span>Login</a></li>
+										<?php } ?>
+									</ul>
+								</li>
+        					</ul>
+						</li>
+          
+          
+          </ul>
+              <!-- <div class="login_btn-contanier ml-0 ml-lg-5">
                 <a href="login.php">
                   <img src="images/user.png" alt="">
                   <span>
                     Login
                   </span>
                 </a>
-              </div>
+              </div> -->
             </div>
           </div>
 
