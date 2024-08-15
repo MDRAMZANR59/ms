@@ -34,6 +34,9 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -44,7 +47,7 @@
         <div class="top_contact-container">
           <div class="tel_container">
             <a href="">
-              <img src="images/telephone-symbol-button.png" alt=""> Call : +01 1234567890
+              <img src="images/telephone-symbol-button.png" alt=""> Emergency: +999
             </a>
           </div>
           <div class="social-container">
@@ -103,34 +106,34 @@
 						<li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
 						<li><a class="nav-link" href="cart.php"><img src="images/cart.svg"><span class="badge cart_total" > <?= isset($_SESSION['cart']['total_qty'])?$_SESSION['cart']['total_qty']:0 ?> </span></a></li>
 					
-            <li>
-							<ul class=class="dropdown-menu dropdown-menu-end">
-								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+            
+          
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+              <a  href="javascript:void(0);" data-bs-toggle="dropdown">
 									<?php if(isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']){ ?>
-										<span class="nav-link" href="#"><span style="color:white" class="last_name"><?= $_SESSION['user_data']->last_name ?></span> <img src="<?= $baseurl ?>admin/assets/customer_photos/"></span>
+										<span class="nav-link" href="#"><span style="color:red" class="last_name"><?= $_SESSION['user_data']->last_name ?></span> <img src="<?= $baseurl ?>admin/assets/customer_photos/"></span>
 										
  										<?php }else{ ?>
 											<span class="nav-link" href="#"><img src="<?= $baseurl ?>admin/assets/customer_photos/"></span>
-										<?php } ?>
-									
-									</a>
-									<?php if(isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']){ ?>
-									<ul class="">
-										<li><a class="dropdown-item" href="#"><span class="edu-icon edu-home-admin author-log-ic"></span>My Account</a></li>
+										<?php } ?>	
+							</a>
+              <?php if(isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']){ ?>
+            </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <li><a class="dropdown-item" href="#"><span class="edu-icon edu-home-admin author-log-ic"></span>My Account</a></li>
 											<li><a class="dropdown-item" href="#"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a></li>
 											<li><a class="dropdown-item" href="<?= $baseurl ?>logout.php"><span class="edu-icon edu-locked author-log-ic"></span>Logout</a></li>
  										<?php }else{ ?>
 										<ul class="dropdown-item" href="#">
 											<li><a class="dropdown-item" href="<?= $baseurl ?>login.php"><span class="align-middle"></span>Login</a></li>
 										<?php } ?>
-									</ul>
-								</li>
-        					</ul>
-						</li>
-          
+              </ul>
+
           
           </ul>
+
+          
               <!-- <div class="login_btn-contanier ml-0 ml-lg-5">
                 <a href="login.php">
                   <img src="images/user.png" alt="">
