@@ -103,37 +103,65 @@
                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
               </form>
               <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
+						<!-- <li><a class="nav-link" href="#"><img src="images/user.svg"></a></li> -->
 						<li><a class="nav-link" href="cart.php"><img src="images/cart.svg"><span class="badge cart_total" > <?= isset($_SESSION['cart']['total_qty'])?$_SESSION['cart']['total_qty']:0 ?> </span></a></li>
 					
-            
-          
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-              <a  href="javascript:void(0);" data-bs-toggle="dropdown">
+            <!-- User Info Old -->
+            <!-- <li>
+							<ul class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+								<li class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+									<a href="javascript:void(0);" data-bs-toggle="dropdown">
 									<?php if(isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']){ ?>
 										<span class="nav-link" href="#"><span style="color:red" class="last_name"><?= $_SESSION['user_data']->last_name ?></span> <img src="<?= $baseurl ?>admin/assets/customer_photos/"></span>
 										
  										<?php }else{ ?>
 											<span class="nav-link" href="#"><img src="<?= $baseurl ?>admin/assets/customer_photos/"></span>
-										<?php } ?>	
-							</a>
-              <?php if(isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']){ ?>
-            </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li><a class="dropdown-item" href="#"><span class="edu-icon edu-home-admin author-log-ic"></span>My Account</a></li>
+										<?php } ?>
+									
+									</a>
+									<?php if(isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']){ ?>
+									<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+										<li><a class="dropdown-item" href="#"><span class="edu-icon edu-home-admin author-log-ic"></span>My Account</a></li>
 											<li><a class="dropdown-item" href="#"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a></li>
 											<li><a class="dropdown-item" href="<?= $baseurl ?>logout.php"><span class="edu-icon edu-locked author-log-ic"></span>Logout</a></li>
  										<?php }else{ ?>
 										<ul class="dropdown-item" href="#">
 											<li><a class="dropdown-item" href="<?= $baseurl ?>login.php"><span class="align-middle"></span>Login</a></li>
 										<?php } ?>
-              </ul>
+									</ul>
+								</li>
+        					</ul>
+						</li> -->
+
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+              <?php if(isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']){ ?>
+            <span class="nav-link">
+                <span style="color:white" class="first_name"><?= $_SESSION['user_data']->first_name ?></span>
+                <img src="<?= $baseurl ?>images/user.svg">
+            </span>
+            <?php } else { ?>
+            <!-- <span class="nav-link">
+                <img src="<?= $baseurl ?>admin/assets/customer_photos/" alt="Guest Photo">
+            </span> -->
+            <?php } ?>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <?php if(isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']){ ?>
+                    <li><a class="dropdown-item" href="#"><span class="edu-icon edu-home-admin author-log-ic"></span>My Account</a></li>
+                    <li><a class="dropdown-item" href=""><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a></li>
+                    <li><a class="dropdown-item" href="<?= $baseurl ?>logout.php"><span class="edu-icon edu-locked author-log-ic"></span>Logout</a></li>
+                <?php } else { ?>
+                    <li><a class="dropdown-item" href="<?= $baseurl ?>login.php"><span class="edu-icon edu-locked author-log-ic"></span>Login</a></li>
+                <?php } ?>
+            </ul>
+            </div>
+
 
           
           </ul>
 
-          
+          <
               <!-- <div class="login_btn-contanier ml-0 ml-lg-5">
                 <a href="login.php">
                   <img src="images/user.png" alt="">
