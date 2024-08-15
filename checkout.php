@@ -211,7 +211,7 @@
 								</table>
 
 								<div class="form-group">
-									<button class="btn btn-black btn-lg py-3 btn-block" type="submit">Place Order</button>
+									<button class="btn btn-primary btn-lg py-3 btn-block" type="submit">Place Order</button>
 								</div>
 
 							</div>
