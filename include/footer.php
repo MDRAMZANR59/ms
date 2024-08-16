@@ -75,8 +75,8 @@
   <!-- footer section -->
   <section class="container-fluid footer_section">
     <p>
-      &copy; 2019 All Rights Reserved. Design by
-      <a href="https://html.design/">Free Html Templates</a>
+      &copy; 2024 Made by MS
+      
     </p>
   </section>
   <!-- footer section -->
