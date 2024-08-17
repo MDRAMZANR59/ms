@@ -6,7 +6,7 @@
 		<div class="row justify-content-between">
 			<div class="col-lg-5">
 				<div class="intro-excerpt">
-					<h1>Checkout</h1>
+					<h1 class="btn btn-success btn-lg py-3 btn-block">Checkout</h1>
 				</div>
 			</div>
 			<div class="col-lg-7">
@@ -23,8 +23,8 @@
 		<form action="sslcmz.php" method="post">
 			<div class="row mb-5">
 				<div class="col-md-12">
-				<div class="border p-4 rounded" role="alert">
-					Returning customer? <a href="login.php">Click here</a> to login
+				<div class="border p-4 rounded" role="alert ">
+					Returning customer? <a class="btn btn-info" href="login.php"> Click here</a> to login
 				</div>
 				</div>
 			</div>

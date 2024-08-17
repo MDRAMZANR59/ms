@@ -26,7 +26,7 @@
 
         html, body {
         height: 100%;
-        background-color: #10e7f4;
+        background-color: ;
         width: 100%;
         margin: 0;
         padding: 0;
@@ -250,11 +250,22 @@
                     <div class="invoice-info clearfix" id="invoice_wrapper">
                         <div class="invoice-headar">
                             <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-sm-3">
+                                    <div class="invoice-logo">
+                                        <!-- logo started -->
+                                        <div >   
+                                            <a href=""><img src="<?= $baseurl ?>/assets/img/illustrations/icons8-medicine-48.png" style="width:100%; max-width:70px;"></a>
+                                            
+                                        </div>
+                                        <!-- logo ended --> 
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
                                     <div class="invoice-logo">
                                         <!-- logo started -->
                                         <div class="logo">
-                                            <h1 style="color:white">MS</h1>
+                                            
+                                            <h1 style="color:">MS</h1>
                                         </div>
                                         <!-- logo ended --> 
                                     </div>
@@ -287,7 +298,7 @@
                                             <h4 class="inv-title-1">Invoice From</h4>
                                             <h2 class="name">MS</h2>
                                             <p class="invo-addr-1">
-                                                Medicine Shoop BD  <br/>
+                                                Medicine Shop BD  <br/>
                                                 msbd@gmail.com <br/>
                                                 Chittagong, Bangladesh <br/>
                                             </p>

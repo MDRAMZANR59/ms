@@ -14,7 +14,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Medion</title>
+  <title>MS</title>
 
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css"
@@ -38,7 +38,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </head>
-
+  
 <body>
   <div class="hero_area">
     <!-- header section strats -->
@@ -66,9 +66,9 @@
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
           <a class="navbar-brand" href="index.php">
-            <img src="images/logo.png" alt="">
+            <img src="<?= $baseurl ?>/assets/img/illustrations/icons8-medicine-48.png" style="width:100%; max-width:55px;">
             <span>
-              Medion
+              MS
             </span>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -97,14 +97,48 @@
                 <li class="nav-item">
                   <a class="nav-link" href="contact.php">Contact us</a>
                 </li>
+                <li class="nav-item">
+                  <form class="form-inline ">
+                    <input type="search" placeholder="Search">
+                    <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
+                  </form>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="cart.php"><img src="images/cart.svg"><span class="badge cart_total" > <?= isset($_SESSION['cart']['total_qty'])?$_SESSION['cart']['total_qty']:0 ?> </span></a>
+                </li>
+
+                <li class="nav-item">
+                  <div class="dropdown ">
+                    <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">User
+                    <?php if(isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']){ ?>
+                    <span class="nav-link">
+                      <span style="color:white" class="first_name"><?= $_SESSION['user_data']->first_name ?></span>
+                      <img width="10%" class="w-px-40 h-auto rounded-circle" src="<?= $baseurl ?>admin/assets/customer_photos/">
+                      <!-- <span width="20%" class="w-px-40 h-auto rounded-circle"><?= $_SESSION['user_data']->photo ?></span> -->
+                      
+                    </span>
+                  <?php } else { ?>
+            <!-- <span class="nav-link">
+                <img src="<?= $baseurl ?>admin/assets/customer_photos/" alt="Guest Photo">
+            </span> -->
+                  <?php } ?>
+                  </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                          <?php if(isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']){ ?>
+                              <li><a class="dropdown-item" href="#"><span class="edu-icon edu-home-admin author-log-ic"></span>My Account</a></li>
+                              <li><a class="dropdown-item" href=""><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a></li>
+                              <li><a class="dropdown-item" href="<?= $baseurl ?>logout.php"><span class="edu-icon edu-locked author-log-ic"></span>Logout</a></li>
+                          <?php } else { ?>
+                              <li><a class="dropdown-item " href="<?= $baseurl ?>login.php"><span class="edu-icon edu-locked author-log-ic"></span>Login</a></li>
+                          <?php } ?>
+                      </ul>
+                      </div>
+                </li>
+                
+              
               </ul>
-              <form class="form-inline ">
-                <input type="search" placeholder="Search">
-                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
-              </form>
-              <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<!-- <li><a class="nav-link" href="#"><img src="images/user.svg"></a></li> -->
-						<li><a class="nav-link" href="cart.php"><img src="images/cart.svg"><span class="badge cart_total" > <?= isset($_SESSION['cart']['total_qty'])?$_SESSION['cart']['total_qty']:0 ?> </span></a></li>
+              
 					
             <!-- User Info Old -->
             <!-- <li>
@@ -133,29 +167,7 @@
         					</ul>
 						</li> -->
 
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-              <?php if(isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']){ ?>
-            <span class="nav-link">
-                <span style="color:white" class="first_name"><?= $_SESSION['user_data']->first_name ?></span>
-                <img src="<?= $baseurl ?>images/user.svg">
-            </span>
-            <?php } else { ?>
-            <!-- <span class="nav-link">
-                <img src="<?= $baseurl ?>admin/assets/customer_photos/" alt="Guest Photo">
-            </span> -->
-            <?php } ?>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <?php if(isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin']){ ?>
-                    <li><a class="dropdown-item" href="#"><span class="edu-icon edu-home-admin author-log-ic"></span>My Account</a></li>
-                    <li><a class="dropdown-item" href=""><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a></li>
-                    <li><a class="dropdown-item" href="<?= $baseurl ?>logout.php"><span class="edu-icon edu-locked author-log-ic"></span>Logout</a></li>
-                <?php } else { ?>
-                    <li><a class="dropdown-item" href="<?= $baseurl ?>login.php"><span class="edu-icon edu-locked author-log-ic"></span>Login</a></li>
-                <?php } ?>
-            </ul>
-            </div>
+            
 
 
           
